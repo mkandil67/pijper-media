@@ -23,10 +23,8 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="<?php echo e(url('/')); ?>">
-                    <?php echo e(config('app.name', 'Laravel')); ?>
-
-                </a>
+                <img src="https://media-exp1.licdn.com/dms/image/C4E0BAQFDntqUGlxHPw/company-logo_200_200/0?e=2159024400&v=beta&t=xsht6DE2JfurvTR0fm2oLJvkrRCMUti9DWuT6tXmtyc" width="50" height="50">
+                <p class="ml-3 mt-2">PM Social Wall</p>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="<?php echo e(__('Toggle navigation')); ?>">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -43,13 +41,13 @@
                         <?php if(auth()->guard()->guest()): ?>
                             <?php if(Route::has('login')): ?>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo e(route('login')); ?>"><?php echo e(__('Login')); ?></a>
+                                    <button class="btn btn-primary" href="<?php echo e(route('login')); ?>" role="button"><?php echo e(__('Login')); ?></button>
                                 </li>
                             <?php endif; ?>
-                            
+
                             <?php if(Route::has('register')): ?>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo e(route('register')); ?>"><?php echo e(__('Register')); ?></a>
+                                    <a class="btn btn-light ml-3" href="<?php echo e(route('register')); ?>"><?php echo e(__('Register')); ?></a>
                                 </li>
                             <?php endif; ?>
                         <?php else: ?>
