@@ -23,10 +23,8 @@ class CreateCategoriesTable extends Migration
             $table ->tinyInteger('Lifehacks');
             $table ->tinyInteger('Fashion');
             $table ->tinyInteger('Beauty');
-            $table ->tinyInteger('Cleaning');
             $table ->tinyInteger('Health');
             $table ->tinyInteger('Family');
-            $table ->tinyInteger('Fashion');
             $table ->tinyInteger('House and garden');
             $table ->tinyInteger('Cleaning');
             $table ->tinyInteger('Lifestyle');
