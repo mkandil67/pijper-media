@@ -7,11 +7,8 @@ use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
 {
-    public function show($user)
+    public function store()
     {
-        $user = User::find($user);
-        return view('categories', [
-            'user' => $user,
-        ]);
+        return view('categories');
     }
 }
