@@ -16,13 +16,22 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table ->id();
             $table ->unsignedBigInteger('user_id');
-            $table ->tinyInteger('DIY');
-            $table ->tinyInteger('Cuisine');
-            $table ->tinyInteger('Sports');
-            $table ->tinyInteger('Politics');
-            $table ->tinyInteger('Entertainment');
-            $table -> tinyInteger('Health');
-            $table ->tinyInteger('Business');
+            $table ->tinyInteger('News');
+            $table ->tinyInteger('Showbizz/Entertainment');
+            $table ->tinyInteger('Royals');
+            $table ->tinyInteger('Food/Recipes');
+            $table ->tinyInteger('Lifehacks');
+            $table ->tinyInteger('Fashion');
+            $table ->tinyInteger('Beauty');
+            $table ->tinyInteger('Cleaning');
+            $table ->tinyInteger('Health');
+            $table ->tinyInteger('Family');
+            $table ->tinyInteger('Fashion');
+            $table ->tinyInteger('House and garden');
+            $table ->tinyInteger('Cleaning');
+            $table ->tinyInteger('Lifestyle');
+            $table ->tinyInteger('Cars');
+            $table ->tinyInteger('Crime');
             $table->timestamps();
 
             $table->index('user_id');
