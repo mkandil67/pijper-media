@@ -13,8 +13,8 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600&display=swap" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -22,9 +22,12 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <img src="https://media-exp1.licdn.com/dms/image/C4E0BAQFDntqUGlxHPw/company-logo_200_200/0?e=2159024400&v=beta&t=xsht6DE2JfurvTR0fm2oLJvkrRCMUti9DWuT6tXmtyc" width="50" height="50">
-                <p class="ml-3 mt-2">PM Social Wall</p>
+            <div class="container-fluid">
+                <a href="/" style="margin-right: 8px">
+                <img src="/pics/pijper-logo.png" width="50" height="50">
+                </a>
+                <h1 style="font-family: Open Sans" class="font-weight-lighter">|</h1>
+                <h6 style="padding-top: 5px; margin-left: 5px;">PM Social Wall</h6>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
