@@ -19,7 +19,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
+// I dont think we need this one any longer
 Route::post('/categories/{id}', 'App\Http\Controllers\CategoriesController@store');
+
+Route::post('/categories', 'App\Http\Controllers\CategoriesController@store');
 
 Route::get('/categories', 'App\Http\Controllers\CategoriesController@create');
 
