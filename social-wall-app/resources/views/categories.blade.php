@@ -28,6 +28,7 @@
                                         <input type="checkbox" name="categories[]" value="Cars"> Cars<br/>
                                         <input type="checkbox" name="categories[]"  value="Crime"> Crime<br/>
 
+
                                     <div class="form-group row mb-0">
                                     <div class="col-md-6 offset-5">
                                         <button type="submit" class="btn btn-primary">
