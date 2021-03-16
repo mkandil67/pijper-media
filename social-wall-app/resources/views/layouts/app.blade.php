@@ -21,22 +21,20 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <div class="bg-img m-0">
+        <nav id="navigation" class="navbar navbar-inner navbar-expand-sm shadow-sm">
             <div class="container-fluid">
-                <a href="/" style="margin-right: 8px">
-                <img src="/pics/pijper-logo.png" width="50" height="50">
-                </a>
-                <h1 style="font-family: Open Sans" class="font-weight-lighter">|</h1>
-                <h6 style="padding-top: 5px; margin-left: 5px;">PM Social Wall</h6>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
+                    <a href="/" style="margin-right: 8px">
+                        <img src="/pics/pijper-logo.png" width="50" height="50">
+                    </a>
+                    <h1 style="font-family: Open Sans" class="font-weight-lighter">|</h1>
+                    <h6 style="padding-top: 5px; margin-left: 5px;">PM Social Wall</h6>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -76,8 +74,9 @@
                 </div>
             </div>
         </nav>
+        </div>
 
-        <main class="py-4">
+        <main class="">
             @yield('content')
         </main>
     </div>
