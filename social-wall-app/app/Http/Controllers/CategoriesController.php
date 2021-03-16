@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categories;
-use App\Models\User;
 use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
@@ -13,7 +12,7 @@ class CategoriesController extends Controller
         return view('categories');
     }
 
-    public function store(Request $request)
+    public function store(Request $request): \Illuminate\Http\RedirectResponse
     {
         $selectedCategories = $request->categories;
         // initialize insertarray with the standard values
@@ -34,16 +33,20 @@ class CategoriesController extends Controller
             'Cars' => 0,
             'Crime' => 0,
         );
-        // give insertarray with the selected values
-        foreach ($selectedCategories as $cat) {
-            $insertArray[$cat] = 1;
+
+        if ($selectedCategories != null){
+            // give insertarray with the selected values
+            foreach ($selectedCategories as $cat) {
+                $insertArray[$cat] = 1;
+            }
         }
+
         // if the person has not filled in a preference before, store it in the table, else update the existing row
         if (Categories::query()->where('user_id', $request->user()->id)->count() == 0) {
             Categories::create($insertArray);
         } else {
             Categories::query()->where('user_id', $request->user()->id)->update($insertArray);
         }
-        return redirect('/home');
+        return redirect()->route('home', [$request->user()->id]);
     }
 }

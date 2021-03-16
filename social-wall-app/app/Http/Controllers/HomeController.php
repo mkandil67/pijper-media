@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Categories;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -21,8 +22,12 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+
+    public function index($user)
     {
-        return view('home');
+        $user = User::find($user);
+        $categories = Categories::where('user_id',$user->id)->get()->first();
+
+        return view('home', ['user' => $user], ['categories' => $categories]);
     }
 }
