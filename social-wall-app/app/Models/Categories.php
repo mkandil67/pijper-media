@@ -13,4 +13,27 @@ class Categories extends Model
     {
         return $this -> belongsTo(User::class);
     }
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'user_id',
+        'News',
+        'Showbizz/Entertainment',
+        'Royals',
+        'Food/Recipes',
+        'Lifehacks',
+        'Fashion',
+        'Beauty',
+        'Health',
+        'Family',
+        'House and garden',
+        'Cleaning',
+        'Lifestyle',
+        'Cars',
+        'Crime',
+    ];
 }

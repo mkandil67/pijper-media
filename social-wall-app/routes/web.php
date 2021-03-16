@@ -19,6 +19,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// I dont think we need this one any longer
+Route::post('/categories/{id}', 'App\Http\Controllers\CategoriesController@store');
 
-Route::get('/categories/{user}', [App\Http\Controllers\CategoriesController::class, 'show'])->name('categories.show');
+Route::post('/categories', 'App\Http\Controllers\CategoriesController@store');
+
+Route::get('/categories', 'App\Http\Controllers\CategoriesController@create');
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
