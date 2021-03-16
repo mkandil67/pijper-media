@@ -27,3 +27,5 @@ Route::post('/categories', 'App\Http\Controllers\CategoriesController@store');
 Route::get('/categories', 'App\Http\Controllers\CategoriesController@create');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/articles', [App\Http\Controllers\ArticlesController::class, 'index'])->name('articles');
