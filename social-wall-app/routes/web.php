@@ -23,6 +23,6 @@ Route::post('/categories', 'App\Http\Controllers\CategoriesController@store');
 
 Route::get('/categories', 'App\Http\Controllers\CategoriesController@create');
 
-Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home.show');
+Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 
-Route::get('/articles', [App\Http\Controllers\ArticlesController::class, 'index'])->name('articles');
+Route::get('/activity', [App\Http\Controllers\ActivityController::class, 'index'])->name('activity');

@@ -47,6 +47,6 @@ class CategoriesController extends Controller
         } else {
             Categories::query()->where('user_id', $request->user()->id)->update($insertArray);
         }
-        return redirect()->route('home.show', [$request->user()->id]);
+        return redirect()->route('home', [$request->user()->id]);
     }
 }

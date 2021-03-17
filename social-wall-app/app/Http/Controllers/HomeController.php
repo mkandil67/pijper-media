@@ -20,7 +20,6 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @param User $user
      * @return \Illuminate\Contracts\Support\Renderable
      */
 
