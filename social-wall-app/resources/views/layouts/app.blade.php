@@ -25,8 +25,10 @@
             color: #0b057a;
         }
         .nav-link:hover {
-            background-color: #0b057a;
-            color: #fff;
+            border-bottom: 2px solid blue;
+        }
+        .nav-item:hover{
+            border-bottom: 2px solid blue;
         }
         .strong {
             font-weight: bold;
