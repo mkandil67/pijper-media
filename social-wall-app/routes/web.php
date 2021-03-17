@@ -19,8 +19,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('/categories', 'App\Http\Controllers\CategoriesController@store');
 
-Auth::routes();
+Route::get('/categories', 'App\Http\Controllers\CategoriesController@create');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home.show');
+
+Route::get('/articles', [App\Http\Controllers\ArticlesController::class, 'index'])->name('articles');
