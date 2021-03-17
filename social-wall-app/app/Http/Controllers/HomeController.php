@@ -20,12 +20,13 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
+     * @param User $user
      * @return \Illuminate\Contracts\Support\Renderable
      */
 
-    public function index($user)
+    public function index(): \Illuminate\Contracts\Support\Renderable
     {
-        $user = User::find($user);
+        $user = auth()->user();
         $categories = Categories::where('user_id',$user->id)->get()->first();
 
         return view('home', ['user' => $user], ['categories' => $categories]);

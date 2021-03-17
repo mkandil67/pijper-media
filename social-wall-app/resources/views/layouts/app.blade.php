@@ -18,10 +18,21 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <style>
+        .nav-link {
+            padding: 1em 0.5em;
+        }
+        .nav-link:hover {
+            background-color: #0b057a;
+            color: #fff;
+        }
+    </style>
+
 </head>
 <body>
     <div id="app">
-        <div class="bg-img m-0">
+        <div class="bg-img">
         <nav id="navigation" class="navbar navbar-inner navbar-expand-sm shadow-sm">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -42,7 +53,7 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <button class="btn btn-primary" href="{{ route('login') }}" role="button">{{ __('Login') }}</button>
+                                    <a class="btn btn-primary" href="{{ route('login') }}" role="button">{{ __('Login') }}</a>
                                 </li>
                             @endif
 
@@ -52,6 +63,11 @@
                                 </li>
                             @endif
                         @else
+
+                            <a class="nav-link" href="#">Notifications</a>
+                            <a class="nav-link" href="/articles">Activity</a>
+                            <a class="nav-link" href="/home">Home</a>
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
