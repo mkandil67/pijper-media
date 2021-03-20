@@ -26,3 +26,5 @@ Route::get('/categories', 'App\Http\Controllers\CategoriesController@create');
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 
 Route::get('/activity', [App\Http\Controllers\ActivityController::class, 'index'])->name('activity');
+
+Route::post('/posts', 'App\Http\Controllers\PostsController@update')->name('posts');
