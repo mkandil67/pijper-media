@@ -20,10 +20,10 @@
 
                                         <img class="card-img-top" src="{{$post->image_url}}" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
                                         <div class="card-body">
-                                            <p class="card-text font-weight-bold">{{$post->title}}.</p>
+                                            <p class="card-text font-weight-bold">{{$post->caption}}.</p>
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <div class="btn-group-vertical">
-                                                    <form action="{{route('posts', ['id' => $post->id])}}" method="POST">
+                                                    <form action="{{route('posts', ['id' => $post->id, 'user' => $user->id])}}" method="POST">
                                                         @csrf
                                                         <input type="hidden" name="id" value="{{$post->id}}">
                                                         <button type="submit" class="btn btn-md btn-outline-info font-weight-bold">Add</button>

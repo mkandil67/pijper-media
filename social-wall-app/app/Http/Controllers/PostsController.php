@@ -70,7 +70,7 @@ class PostsController extends Controller
     {
         $id = $request->id;
         $post = Post::find($id);
-        $post->is_written_about = !$post->is_written_about;
+        $post->writer_id = $request->user()->id;
         $post->save();
         return redirect('/home');
     }
