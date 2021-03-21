@@ -70,7 +70,11 @@ class PostsController extends Controller
     {
         $id = $request->id;
         $post = Post::find($id);
-        $post->writer_id = $request->user()->id;
+        if (!empty($post->writer_id)){
+            $post->writer_id = null;
+        } else {
+            $post->writer_id = $request->user()->id;
+        }
         $post->save();
         return redirect('/home');
     }

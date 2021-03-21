@@ -29,6 +29,6 @@ class HomeController extends Controller
         $user = auth()->user();
         $categories = Categories::where('user_id',$user->id)->get()->first();
         $posts = Post::all();
-        return view('home', ['user' => $user], ['categories' => $categories])->with('posts', $posts);
+        return view('home', ['user' => $user, 'posts' => $posts], ['categories' => $categories]);
     }
 }

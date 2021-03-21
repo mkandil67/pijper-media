@@ -12,7 +12,7 @@ class Post extends Model
     protected $table = 'posts';
     public $primaryKey = 'id';
     protected $fillable = [
-        'is_written_about',
+        'writer_id',
     ];
 
 }

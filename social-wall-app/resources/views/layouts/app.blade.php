@@ -33,6 +33,21 @@
         .strong {
             font-weight: bold;
         }
+         a .readMore {
+             display: none;
+         }
+
+        a .readLess {
+            display: inline;
+        }
+
+        a.collapsed .readMore {
+            display: inline;
+        }
+
+        a.collapsed .readLess {
+            display: none;
+        }
 
     </style>
 
@@ -100,7 +115,7 @@
                                                 <input type="checkbox" name="categories[]"  value="House and garden" {{ ($categories['House and garden']) ? 'checked' : '' }} > House and Garden<br/>
                                                 <input type="checkbox" name="categories[]"  value="Cleaning" {{ ($categories['Cleaning']) ? 'checked' : '' }} > Cleaning<br/>
                                                 <input type="checkbox" name="categories[]"  value=" Lifestyle" {{ ($categories['Lifestyle']) ? 'checked' : '' }} > Lifestyle<br/>
-                                                <input type="checkbox" name="categories[]" value="Lifestyle" {{ ($categories['Lifestyle']) ? 'checked' : '' }} > Cars<br/>
+                                                <input type="checkbox" name="categories[]" value="Cars" {{ ($categories['Cars']) ? 'checked' : '' }} > Cars<br/>
                                                 <input type="checkbox" name="categories[]"  value="Crime" {{ ($categories['Crime']) ? 'checked' : '' }} > Crime<br/>
 
                                                 <div class="form-group row mb-0">
