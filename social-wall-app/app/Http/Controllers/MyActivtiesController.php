@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Models\Categories;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
-class PostsController extends Controller
+class MyActivtiesController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $user = auth()->user();
+        $posts = Post::where('writer_id','=',$user->id)->get();
+        return view('my_activity', ['user' => $user, 'posts' => $posts]);
     }
 
     /**
@@ -36,6 +38,7 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
+        //
     }
 
     /**
@@ -57,6 +60,7 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
+        //
     }
 
     /**
@@ -66,17 +70,9 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $id = $request->id;
-        $post = Post::find($id);
-        if (!empty($post->writer_id)){
-            $post->writer_id = null;
-        } else {
-            $post->writer_id = $request->user()->id;
-        }
-        $post->save();
-        return redirect(request()->headers->get('referer'));
+        //
     }
 
     /**

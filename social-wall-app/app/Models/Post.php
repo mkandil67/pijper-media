@@ -14,5 +14,4 @@ class Post extends Model
     protected $fillable = [
         'writer_id',
     ];
-
 }

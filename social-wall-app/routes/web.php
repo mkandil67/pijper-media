@@ -28,3 +28,5 @@ Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 Route::get('/activity', [App\Http\Controllers\ActivityController::class, 'index'])->name('activity');
 
 Route::post('/posts', 'App\Http\Controllers\PostsController@update')->name('posts');
+
+Route::get('my_activity', [App\Http\Controllers\MyActivtiesController::class, 'index'])->name('my_activity');
