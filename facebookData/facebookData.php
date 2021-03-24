@@ -123,11 +123,12 @@ foreach ($categories as $category) {
         foreach ($data as $post) {
             // get the post data
             $post_url = $post['permalink_url'];
-            $shares = $post['shares']['count'];
+//            var_dump($post);
+            $shares = $post['shares']['count'] ?? 0;
             $message = $post['message'];
             $picture_url = $post['picture'];
-            $likes = $post['reactions']['summary']['total_count'];
-            $comments = $post['comments']['summary']['total_count'];
+            $likes = $post['reactions']['summary']['total_count'] ?? 0;
+            $comments = $post['comments']['summary']['total_count'] ?? 0;
             $posted_at = $post['created_time'];
             $name = $post['from']['name'];
             $post_id = $post['id'];
@@ -135,15 +136,30 @@ foreach ($categories as $category) {
                 continue;
             }
 
+            $statement = $con->prepare("SELECT * FROM posts WHERE post_id = ?");
+            $statement->execute([$post_id]);
+            $old_data = $statement->fetch();
+            if (is_array($old_data)) {
+                echo 'ITS IN!!!!!!!!!!!!!!!!!!!!!!';
+                // 3. prepare select query
+                $query = "UPDATE posts SET engagement = ?, old_engagement = ?, updated_at = ? WHERE post_id = ?";
+                $stmt = $con->prepare( $query );
 
-//////////////////////// THIS DOES NOT WORK YET //////////////////////////////////
-//            $query = "SELECT * FROM posts WHERE post_id = ?";
-//            $stmt = $con->prepare( $query );
-//            $stmt->bindParam(1, $post_id);
-//            $output = $stmt->execute();
-//            echo "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD";
-//            var_dump($output);
-//////////////////////// THIS DOES NOT WORK YET //////////////////////////////////
+                //  4. sample product ID
+                $old_engagement = $old_data['engagement'];
+                $engagement = $shares + $comments + $likes;
+                $now = date('Y-m-d H:i:s');
+
+                // 5. this is the first question mark in the query
+                $stmt->bindParam(1, $engagement);
+                $stmt->bindParam(2, $old_engagement);
+                $stmt->bindParam(3, $now);
+                $stmt->bindParam(4, $post_id);
+
+                // 6. execute our query
+                $stmt->execute();
+            } else {
+                echo 'NOT IN DATABASE';
                 // 3. prepare select query
                 $query = "INSERT INTO posts (post_id, category, platform, data_source, caption, post_url, image_url, engagement, old_engagement, writer_id, posted_at,created_at, updated_at)
             VALUES (?, ?, 'facebook', ?, ?, ?, ?, ?, 0, null, ?, ?, ?)";
@@ -167,6 +183,7 @@ foreach ($categories as $category) {
 
                 // 6. execute our query
                 $stmt->execute();
+            }
         }
     }
 }
