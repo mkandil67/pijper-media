@@ -97,10 +97,10 @@
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         Categories
                                     </a>
-                                    <div class="dropdown-menu dropdown-menu-right" style="width:250%" aria-labelledby="navbarDropdown">
-                                        <form action="/categories" method="POST">
+                                    <div class="dropdown-menu dropdown-menu-right" style="width:250%; " aria-labelledby="navbarDropdown">
+                                        <form class="d-flex justify-content-center" action="/categories" method="POST">
                                             @csrf
-                                            <div class="card-body">
+                                            <div class="">
                                                 <div class="form-group row"></div>
 
                                                 <input type="checkbox" name="categories[]" value="News" {{ ($categories['News']) ? 'checked' : '' }} > News<br/>
