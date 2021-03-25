@@ -27,11 +27,26 @@
         .nav-link:hover {
             border-bottom: 2px solid blue;
         }
-        .nav-item:hover{
+        .border-b:hover{
             border-bottom: 2px solid blue;
         }
         .strong {
             font-weight: bold;
+        }
+         a .readMore {
+             display: none;
+         }
+
+        a .readLess {
+            display: inline;
+        }
+
+        a.collapsed .readMore {
+            display: inline;
+        }
+
+        a.collapsed .readLess {
+            display: none;
         }
 
     </style>
@@ -70,11 +85,54 @@
                                     <a class="btn btn-light ml-3" href="<?php echo e(route('register')); ?>"><?php echo e(__('Register')); ?></a>
                                 </li>
                             <?php endif; ?>
+
+
                         <?php else: ?>
 
                             <li class="<?php echo e((request()->is('home')) ? 'strong' : ''); ?>">
                                 <a class="nav-link nav-link-me" href="<?php echo e(route('home')); ?>">Home</a>
-                            </li>
+
+                            <?php if(Route::is('home')): ?>
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        Categories
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right" style="width:250%; " aria-labelledby="navbarDropdown">
+                                        <form class="d-flex justify-content-center" action="/categories" method="POST">
+                                            <?php echo csrf_field(); ?>
+                                            <div class="">
+                                                <div class="form-group row"></div>
+
+                                                <input type="checkbox" name="categories[]" value="News" <?php echo e(($categories['News']) ? 'checked' : ''); ?> > News<br/>
+                                                <input type="checkbox" name="categories[]" value="Showbizz/Entertainment" <?php echo e(($categories['Showbizz/Entertainment']) ? 'checked' : ''); ?> > Showbizz/Entertainment<br/>
+                                                <input type="checkbox" name="categories[]"  value="Royals" <?php echo e(($categories['Royals']) ? 'checked' : ''); ?> > Royals<br/>
+                                                <input type="checkbox" name="categories[]"  value="Food/Recipes" <?php echo e(($categories['Food/Recipes']) ? 'checked' : ''); ?> > Food/Recipes<br/>
+                                                <input type="checkbox" name="categories[]"  value="Lifehacks" <?php echo e(($categories['Lifehacks']) ? 'checked' : ''); ?> > Lifehacks<br/>
+                                                <input type="checkbox" name="categories[]"  value="Fashion" <?php echo e(($categories['Fashion']) ? 'checked' : ''); ?> > Fashion<br/>
+                                                <input type="checkbox" name="categories[]"  value="Beauty" <?php echo e(($categories['Beauty']) ? 'checked' : ''); ?> > Beauty<br/>
+                                                <input type="checkbox" name="categories[]"  value="Health" <?php echo e(($categories['Health']) ? 'checked' : ''); ?> > Health<br/>
+                                                <input type="checkbox" name="categories[]"  value="Family" <?php echo e(($categories['Family']) ? 'checked' : ''); ?> > Family<br/>
+                                                <input type="checkbox" name="categories[]"  value="House and garden" <?php echo e(($categories['House and garden']) ? 'checked' : ''); ?> > House and Garden<br/>
+                                                <input type="checkbox" name="categories[]"  value="Cleaning" <?php echo e(($categories['Cleaning']) ? 'checked' : ''); ?> > Cleaning<br/>
+                                                <input type="checkbox" name="categories[]"  value=" Lifestyle" <?php echo e(($categories['Lifestyle']) ? 'checked' : ''); ?> > Lifestyle<br/>
+                                                <input type="checkbox" name="categories[]" value="Cars" <?php echo e(($categories['Cars']) ? 'checked' : ''); ?> > Cars<br/>
+                                                <input type="checkbox" name="categories[]"  value="Crime" <?php echo e(($categories['Crime']) ? 'checked' : ''); ?> > Crime<br/>
+
+                                                <div class="form-group row mb-0">
+                                                    <div class="col-md-6 offset-3 pt-3">
+                                                        <button type="submit" class="btn btn-primary">
+                                                            <?php echo e(__('Submit')); ?>
+
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </li>
+                            <?php endif; ?>
+
+
                             <li class="<?php echo e((request()->is('#')) ? 'strong' : ''); ?>">
                                 <a class="nav-link nav-link-me" href="#">Trending</a>
                             </li>
@@ -90,6 +148,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="#">Notifications</a>
+                                    <a class="dropdown-item" href="<?php echo e(route('my_activity')); ?>">My Activity</a>
                                     <a class="dropdown-item" href="<?php echo e(route('logout')); ?>"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

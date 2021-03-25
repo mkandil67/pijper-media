@@ -1,12 +1,21 @@
 <?php
 // 1. database credentials
-$host = "localhost";
+$host = "127.0.0.1";
 $db_name = "users-pijper";
 $username = "root";
 $password = "";
 
 // 2. connect to database
-$con = new PDO("mysql:host={$host};dbname={$db_name}", $username, $password);
+try {
+    $con = new PDO("mysql:host=$host;dbname=$db_name", $username, $password);
+    // set the PDO error mode to exception
+    $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Connected successfully";
+}
+catch(PDOException $e)
+{
+    echo "Connection failed: " . $e->getMessage();
+}
 
 require_once __DIR__ . '/vendor/autoload.php'; // change path as needed
 
@@ -130,6 +139,8 @@ foreach ($categories as $category) {
             $likes = $post['reactions']['summary']['total_count'] ?? 0;
             $comments = $post['comments']['summary']['total_count'] ?? 0;
             $posted_at = $post['created_time'];
+            $posted_at = str_replace('T', ' ', $post['created_time']);
+            $posted_at = str_replace('+0000', '', $post['created_time']);
             $name = $post['from']['name'];
             $post_id = $post['id'];
             if ($message == null) {

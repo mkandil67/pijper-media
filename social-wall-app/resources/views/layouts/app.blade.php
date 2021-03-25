@@ -27,7 +27,7 @@
         .nav-link:hover {
             border-bottom: 2px solid blue;
         }
-        .nav-item:hover{
+        .border-b:hover{
             border-bottom: 2px solid blue;
         }
         .strong {

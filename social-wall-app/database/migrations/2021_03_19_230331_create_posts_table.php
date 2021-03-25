@@ -21,7 +21,7 @@ class CreatePostsTable extends Migration
             $table->string("data_source");
             $table->text("caption");
             $table->text("post_url");
-            $table->text("image_url");
+            $table->text("image_url") -> nullable();
             $table->unsignedBigInteger("engagement");
             $table->unsignedBigInteger("old_engagement");
             $table->unsignedBigInteger("writer_id")->nullable();

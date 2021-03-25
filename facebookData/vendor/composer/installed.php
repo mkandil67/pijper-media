@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '2b08d946f833aa81604eacd08e9e2f08a179d1c5',
+    'reference' => '6ee8d3aa9f0bf2f2164d403032e9946474af9026',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,16 +18,16 @@
       'aliases' => 
       array (
       ),
-      'reference' => '2b08d946f833aa81604eacd08e9e2f08a179d1c5',
+      'reference' => '6ee8d3aa9f0bf2f2164d403032e9946474af9026',
     ),
     'facebook/graph-sdk' => 
     array (
-      'pretty_version' => '5.1.4',
-      'version' => '5.1.4.0',
+      'pretty_version' => '5.7.0',
+      'version' => '5.7.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '38fd7187a6704d3ab14ded2f3a534ac4ee6f3481',
+      'reference' => '2d8250638b33d73e7a87add65f47fabf91f8ad9b',
     ),
   ),
 );
