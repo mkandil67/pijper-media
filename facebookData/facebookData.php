@@ -10,7 +10,7 @@ try {
     $con = new PDO("mysql:host=$host;dbname=$db_name", $username, $password);
     // set the PDO error mode to exception
     $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Connected successfully";
+    echo "Connected successfully\n";
 }
 catch(PDOException $e)
 {
@@ -27,81 +27,108 @@ $fb = new \Facebook\Facebook([
 ]);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////// THIS IS NOT YET FINISHED //////////////////////////////////////////
+//////////////////////////////// THIS IS NOT YET FINISHED ////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////
 $categories = array(
-//    'News',
+    'News',
     'Showbizz/Entertainment',
 //    'Royals',
     'Food/Recipes',
 //    'Lifehacks',
 //    'Fashion',
-//    'Beauty',
+    'Beauty',
 //    'Health',
 //    'Family',
 //    'House and Garden',
 //    'Cleaning',
 //    'Lifestyle',
-//    'Cars',
+    'Cars',
 //    'Crime',
 );
 
 $sources = array(
-//    'News' => array(
-//        'nos.nl',
-//        'rtlnieuws.nl',
-//        'ad.nl',
-//        'nu.nl',
-//        'metronieuws.nl',
-//        'telegraaf.nl',
-//        'trouw.nl',
-//        'metro.co.uk',
-//        'hln.be',
-//        'edition.cnn.com',
-//    ),
+    'News' => array(
+        'nos',
+////        'rtlnieuws',
+////        'AD.NL',
+////        'nu.nl',
+////        'Metro',
+////        'telegraaf',
+////        'Trouw.nl',
+////        'MetroUK',
+////        'hln.be',
+////        'cnninternational',
+    ),
     'Showbizz/Entertainment' => array(
         'linda.nl'
     ),
 //    'Royals',
     'Food/Recipes' => array(
         'buzzfeedtasty',
-//        'delish.com',
-//        'eatthis.com',
-//        'thekitchn.com',
-//        'flavorflav.com',
+////        'delish',
+////        'EatThisNotThat',
+////        'thekitchn',
+////        'favorflav',
 //        'nvwa.nl',
-//        'voedingscentrum.nl',
-//        'culy.nl',
-//        'freshhh.nl',
-//        'twistedfood.co.uk',
-//        'yummly.com',
-//        'realsimple.com',
-//        'sterindekeuken.nl',
-//        'womenshealthmag.com',
-//        '24kitchen.nl',
-//        'thespruceeats.com',
-//        'thehealthy.com',
-//        'bbcgoodfood.com',
-//        'elleeten.nl',
-//        'bonappetit.com',
-//        'recipegirl.com',
+////        'voedingscentrum',
+////        'CulyNL',
+////        'Freshhhmag',
+////        'JungleTwisted',
+////        'yummly',
+////        'realsimple',
+////        'sterkindekeuken',
+////        'WomensHealthNL',
+////        '24kitchen',
+////        'thespruceeats',
+////        'TheHealthy',
+////        'BBCGoodFood',
+////        'ELLEeten',
+////        'bonappetitmag',
+////        'RecipeGirl',
     ),
 //    'Lifehacks',
 //    'Fashion',
-//    'Beauty',
+    'Beauty' => array(
+        'hello',
+////        'GlamourNL',
+////        'VorstenNL',
+////        'Royaltynl',
+////        'libelleNL',
+////        'margrietNL',
+////        'Tatlermagazine',
+////        'VogueNL',
+////        'enews',
+////        'ModekoninginMaxima',
+    ),
 //    'Health',
 //    'Family',
 //    'House and Garden',
 //    'Cleaning',
 //    'Lifestyle',
-//    'Cars',
+    'Cars' => array(
+        'topgearnl',
+////        'automotorundsport',
+////        'AutoWeek',
+////        'autobild',
+////        'RoadandTrack',
+////        'autocarofficial',
+////        'caranddriver',
+////        'jalopnik',
+////        'Formula1',
+////        'AUTOSPORT',
+////        'wearetherace',
+////        'autocarofficial',
+////        'racingnews365',
+////        'dailysportscar',
+////        'gptoday.nl',
+////        'motorsportcom.nederland',
+    ),
 //    'Crime',
 );
-
-
 //////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////// THIS IS NOT YET FINISHED //////////////////////////////////////////
+//////////////////////////////// THIS IS NOT YET FINISHED ////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////
+
 foreach ($categories as $category) {
     foreach ($sources[$category] as $source) {
         try {
@@ -120,70 +147,78 @@ foreach ($categories as $category) {
 
         $data = array_values($response->getDecodedBody())[0];
 
-///////////////////// some debugging stuffs /////////////////////
+///////////////////// some debugging stuffs for pagination /////////////////////
 //$paging = array_values($response->getDecodedBody())[1];
 //$edge = $response->getGraphEdge();
 //var_dump($paging);
 //var_dump($data);
 //var_dump($response->getGraphEdge());
-///////////////////// some debugging stuffs /////////////////////
+///////////////////// some debugging stuffs for pagination /////////////////////
 
 
         foreach ($data as $post) {
-            // get the post data
-            $post_url = $post['permalink_url'];
-//            var_dump($post);
-            $shares = $post['shares']['count'] ?? 0;
-            $message = $post['message'];
-            $picture_url = $post['picture'];
-            $likes = $post['reactions']['summary']['total_count'] ?? 0;
-            $comments = $post['comments']['summary']['total_count'] ?? 0;
-            $posted_at = $post['created_time'];
-            $posted_at = str_replace('T', ' ', $post['created_time']);
-            $posted_at = str_replace('+0000', '', $post['created_time']);
-            $name = $post['from']['name'];
-            $post_id = $post['id'];
-            if ($message == null) {
+            // IF IT IS AN ENGAGEMENT POST SKIP IT
+            if (!array_key_exists('message', $post)) {
+                echo "skipped a post, no message: $post_id\n";
+                continue;
+            }
+            if (!array_key_exists('picture', $post)) {
+                echo "skipped a post, no picture: $post_id\n";
                 continue;
             }
 
+            // GATHER THE DATA FROM THE POST
+            $post_id = $post['id'];
+            $shares = $post['shares']['count'] ?? 0;
+            $likes = $post['reactions']['summary']['total_count'] ?? 0;
+            $comments = $post['comments']['summary']['total_count'] ?? 0;
+
+            // QUERY THE DATABASE FOR A POST WITH THE GIVEN post_id
             $statement = $con->prepare("SELECT * FROM posts WHERE post_id = ?");
             $statement->execute([$post_id]);
             $old_data = $statement->fetch();
             if (is_array($old_data)) {
-                echo 'ITS IN!!!!!!!!!!!!!!!!!!!!!!';
-                // 3. prepare select query
+                // POST IS IN DATABASE, SO UPDATE THE DATA
+                echo "Updated post data\n";
+
+                // prepare update query
                 $query = "UPDATE posts SET engagement = ?, old_engagement = ?, updated_at = ? WHERE post_id = ?";
                 $stmt = $con->prepare( $query );
 
-                //  4. sample product ID
+                //  calculate necessary variables
                 $old_engagement = $old_data['engagement'];
                 $engagement = $shares + $comments + $likes;
                 $now = date('Y-m-d H:i:s');
 
-                // 5. this is the first question mark in the query
+                // bind the parameters to a variable
                 $stmt->bindParam(1, $engagement);
                 $stmt->bindParam(2, $old_engagement);
                 $stmt->bindParam(3, $now);
                 $stmt->bindParam(4, $post_id);
-
-                // 6. execute our query
-                $stmt->execute();
             } else {
-                echo 'NOT IN DATABASE';
-                // 3. prepare select query
+                // POST IS NOT IN DATABASE, SO ADD IT
+                echo "Added post to database\n";
+
+                // prepare insert query
                 $query = "INSERT INTO posts (post_id, category, platform, data_source, caption, post_url, image_url, engagement, old_engagement, writer_id, posted_at,created_at, updated_at)
             VALUES (?, ?, 'facebook', ?, ?, ?, ?, ?, 0, null, ?, ?, ?)";
                 $stmt = $con->prepare( $query );
 
-                //  4. sample product ID
+                //  calculate necessary variables
+                $data_source = $post['from']['name'];
+                $message = $post['message'];
+                $picture_url = $post['picture'];
+                $post_url = $post['permalink_url'];
+                $posted_at = $post['created_time'];
+                $posted_at = str_replace('T', ' ', $post['created_time']);
+                $posted_at = str_replace('+0000', '', $post['created_time']);
                 $engagement = $shares + $comments + $likes;
                 $now = date("Y-m-d H:i:s");
 
-                // 5. this is the first question mark in the query
+                // bind the parameters to a variable
                 $stmt->bindParam(1, $post_id);
                 $stmt->bindParam(2, $category);
-                $stmt->bindParam(3, $name);
+                $stmt->bindParam(3, $data_source);
                 $stmt->bindParam(4, $message);
                 $stmt->bindParam(5, $post_url);
                 $stmt->bindParam(6, $picture_url);
@@ -191,10 +226,9 @@ foreach ($categories as $category) {
                 $stmt->bindParam(8, $posted_at);
                 $stmt->bindParam(9, $now);
                 $stmt->bindParam(10, $now);
-
-                // 6. execute our query
-                $stmt->execute();
             }
+            // execute our query
+            $stmt->execute();
         }
     }
 }
