@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/social-wall-app/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/resources/views/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/social-wall-app/storage/framework/views/c1b5514b2a0a785bc5c1dcc27b4f8c79cfe722d1.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/storage/framework/views/c1b5514b2a0a785bc5c1dcc27b4f8c79cfe722d1.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/social-wall-app/storage/logs/laravel.log" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/storage/logs/laravel.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +55,8 @@
       <workItem from="1616522323195" duration="10043000" />
       <workItem from="1616607263917" duration="9225000" />
       <workItem from="1616666294869" duration="4961000" />
-      <workItem from="1616840133119" duration="1379000" />
+      <workItem from="1616840133119" duration="2031000" />
+      <workItem from="1616879354608" duration="4231000" />
     </task>
     <servers />
   </component>
