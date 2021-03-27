@@ -152,7 +152,7 @@
                 <div class="tab-pane fade active show" id="facebook" role="tabpanel" aria-labelledby="facebook-tab">
                     <div class="container-fluid" id="postsCard">
                         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-6">
-                            @foreach(App\Models\Post::where('writer_id','=',null)->get() as $post)
+                            @foreach(App\Models\Post::where('writer_id','=',null)->orderBy('posted_at','desc')->get() as $post)
                                 @if($categories[$post->category])
                                     <div class="card shadow-sm m-1 mb-5 ">
 
