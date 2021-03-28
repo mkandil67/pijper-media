@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="04ae9b14-beb2-4ddf-8e19-fe1f79266a95" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/facebookData/trendingCheck.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/social-wall-app/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/social-wall-app/storage/framework/views/c1b5514b2a0a785bc5c1dcc27b4f8c79cfe722d1.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/storage/framework/views/c1b5514b2a0a785bc5c1dcc27b4f8c79cfe722d1.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/facebookData/facebookData.php" beforeDir="false" afterPath="$PROJECT_DIR$/facebookData/facebookData.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/database/migrations/2021_03_19_230331_create_posts_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/database/migrations/2021_03_19_230331_create_posts_table.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +34,9 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1qAVKyazQw8EMHH9LkquQ7thhSP" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -57,10 +61,22 @@
       <workItem from="1616666294869" duration="4961000" />
       <workItem from="1616840133119" duration="2031000" />
       <workItem from="1616879354608" duration="4231000" />
+      <workItem from="1616953634762" duration="6920000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

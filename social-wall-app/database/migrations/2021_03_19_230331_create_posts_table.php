@@ -22,6 +22,8 @@ class CreatePostsTable extends Migration
             $table->text("caption");
             $table->text("post_url");
             $table->text("image_url") -> nullable();
+            $table->boolean("is_trending");
+            $table->unsignedBigInteger("followers_count");
             $table->unsignedBigInteger("engagement");
             $table->unsignedBigInteger("old_engagement");
             $table->unsignedBigInteger("writer_id")->nullable();

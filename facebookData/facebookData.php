@@ -36,7 +36,7 @@ $categories = array(
     'Food/Recipes',
 //    'Lifehacks',
 //    'Fashion',
-    'Beauty',
+//    'Beauty',
 //    'Health',
 //    'Family',
 //    'House and Garden',
@@ -134,7 +134,8 @@ foreach ($categories as $category) {
         try {
             // Get the \Facebook\GraphNodes\GraphUser object for the current user.
             // If you provided a 'default_access_token', the '{access-token}' is optional.
-            $response = $fb->get('/'. $source .'/posts?fields=permalink_url,shares,message,picture,reactions.limit(0).summary(total_count),comments.limit(0).summary(total_count),created_time,from');
+//            $response = $fb->get('/'. $source .'/posts?fields=permalink_url,shares,message,picture,reactions.limit(0).summary(total_count),comments.limit(0).summary(total_count),created_time,from');
+            $response = $fb->get('/' . $source . '?fields=followers_count,posts{permalink_url,shares,message,picture,reactions.limit(0).summary(total_count),comments.limit(0).summary(total_count),created_time,from}');
         } catch(\Facebook\Exceptions\FacebookResponseException $e) {
             // When Graph returns an error
             echo 'Graph returned an error: ' . $e->getMessage();
@@ -144,8 +145,11 @@ foreach ($categories as $category) {
             echo 'Facebook SDK returned an error: ' . $e->getMessage();
             exit;
         }
+//        var_dump(array_values($response->getDecodedBody())[0]['data']);
 
-        $data = array_values($response->getDecodedBody())[0];
+        $followers_count = array_values($response->getDecodedBody())[0];
+
+        $data = array_values($response->getDecodedBody())[1]['data'];
 
 ///////////////////// some debugging stuffs for pagination /////////////////////
 //$paging = array_values($response->getDecodedBody())[1];
@@ -182,7 +186,7 @@ foreach ($categories as $category) {
                 echo "Updated post data\n";
 
                 // prepare update query
-                $query = "UPDATE posts SET engagement = ?, old_engagement = ?, updated_at = ? WHERE post_id = ?";
+                $query = "UPDATE posts SET followers_count = ?, engagement = ?, old_engagement = ?, updated_at = ? WHERE post_id = ?";
                 $stmt = $con->prepare( $query );
 
                 //  calculate necessary variables
@@ -191,17 +195,18 @@ foreach ($categories as $category) {
                 $now = date('Y-m-d H:i:s');
 
                 // bind the parameters to a variable
-                $stmt->bindParam(1, $engagement);
-                $stmt->bindParam(2, $old_engagement);
-                $stmt->bindParam(3, $now);
-                $stmt->bindParam(4, $post_id);
+                $stmt->bindParam(1, $followers_count);
+                $stmt->bindParam(2, $engagement);
+                $stmt->bindParam(3, $old_engagement);
+                $stmt->bindParam(4, $now);
+                $stmt->bindParam(5, $post_id);
             } else {
                 // POST IS NOT IN DATABASE, SO ADD IT
                 echo "Added post to database\n";
 
                 // prepare insert query
-                $query = "INSERT INTO posts (post_id, category, platform, data_source, caption, post_url, image_url, engagement, old_engagement, writer_id, posted_at,created_at, updated_at)
-            VALUES (?, ?, 'facebook', ?, ?, ?, ?, ?, 0, null, ?, ?, ?)";
+                $query = "INSERT INTO posts (post_id, category, platform, data_source, caption, post_url, image_url, is_trending, followers_count, engagement, old_engagement, writer_id, posted_at,created_at, updated_at)
+            VALUES (?, ?, 'facebook', ?, ?, ?, ?, false, ?, ?, ?, null, ?, ?, ?)";
                 $stmt = $con->prepare( $query );
 
                 //  calculate necessary variables
@@ -222,10 +227,12 @@ foreach ($categories as $category) {
                 $stmt->bindParam(4, $message);
                 $stmt->bindParam(5, $post_url);
                 $stmt->bindParam(6, $picture_url);
-                $stmt->bindParam(7, $engagement);
-                $stmt->bindParam(8, $posted_at);
-                $stmt->bindParam(9, $now);
-                $stmt->bindParam(10, $now);
+                $stmt->bindParam(7, $followers_count);
+                $stmt->bindParam(8, $engagement);
+                $stmt->bindParam(9, $engagement);
+                $stmt->bindParam(10, $posted_at);
+                $stmt->bindParam(11, $now);
+                $stmt->bindParam(12, $now);
             }
             // execute our query
             $stmt->execute();
