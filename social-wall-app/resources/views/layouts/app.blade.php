@@ -1,4 +1,5 @@
 <!doctype html>
+{{-- NAVIGATION BAR --}}
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -22,11 +23,33 @@
     <style>
         .nav-link {
             padding: 1em 0.5em;
+            color: #0b057a;
         }
         .nav-link:hover {
-            background-color: #0b057a;
-            color: #fff;
+            border-bottom: 2px solid blue;
         }
+        .border-b:hover{
+            border-bottom: 2px solid blue;
+        }
+        .strong {
+            font-weight: bold;
+        }
+         a .readMore {
+             display: none;
+         }
+
+        a .readLess {
+            display: inline;
+        }
+
+        a.collapsed .readMore {
+            display: inline;
+        }
+
+        a.collapsed .readLess {
+            display: none;
+        }
+
     </style>
 
 </head>
@@ -36,17 +59,18 @@
         <nav id="navigation" class="navbar navbar-inner navbar-expand-sm shadow-sm">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
+                    <span><img src="https://img.icons8.com/fluent-systems-regular/24/000000/menu--v3.png"/></span>
                 </button>
-
+                <a class="d-sm-none" href="/" style="margin-right: 8px">
+                    <img src="/pics/pijper-logo.png" width="50" height="50">
+                </a>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <a href="/" style="margin-right: 8px">
+                    <a class="d-none d-md-block" href="/" style="margin-right: 8px">
                         <img src="/pics/pijper-logo.png" width="50" height="50">
                     </a>
-                    <h1 style="font-family: Open Sans" class="font-weight-lighter">|</h1>
-                    <h6 style="padding-top: 5px; margin-left: 5px;">PM Social Wall</h6>
-
+                    <h1 style="font-family: Open Sans" class="d-none d-md-block font-weight-lighter">|</h1>
+                    <h6 class="d-none d-md-block" style="padding-top: 5px; margin-left: 5px;">PM Social Wall</h6>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
@@ -62,11 +86,59 @@
                                     <a class="btn btn-light ml-3" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
+
+
                         @else
 
-                            <a class="nav-link" href="#">Notifications</a>
-                            <a class="nav-link" href="/articles">Activity</a>
-                            <a class="nav-link" href="/home">Home</a>
+                            <li class="{{ (request()->is('home')) ? 'strong' : ''}}">
+                                <a class="nav-link nav-link-me" href="{{ route('home') }}">Home</a>
+
+                            @if (Route::is('home'))
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        Categories
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right" style="width:250%; " aria-labelledby="navbarDropdown">
+                                        <form class="d-flex justify-content-center" action="/categories" method="POST">
+                                            @csrf
+                                            <div class="">
+                                                <div class="form-group row"></div>
+
+                                                <input type="checkbox" name="categories[]" value="News" {{ ($categories['News']) ? 'checked' : '' }} > News<br/>
+                                                <input type="checkbox" name="categories[]" value="Showbizz/Entertainment" {{ ($categories['Showbizz/Entertainment']) ? 'checked' : '' }} > Showbizz/Entertainment<br/>
+                                                <input type="checkbox" name="categories[]"  value="Royals" {{ ($categories['Royals']) ? 'checked' : '' }} > Royals<br/>
+                                                <input type="checkbox" name="categories[]"  value="Food/Recipes" {{ ($categories['Food/Recipes']) ? 'checked' : '' }} > Food/Recipes<br/>
+                                                <input type="checkbox" name="categories[]"  value="Lifehacks" {{ ($categories['Lifehacks']) ? 'checked' : '' }} > Lifehacks<br/>
+                                                <input type="checkbox" name="categories[]"  value="Fashion" {{ ($categories['Fashion']) ? 'checked' : '' }} > Fashion<br/>
+                                                <input type="checkbox" name="categories[]"  value="Beauty" {{ ($categories['Beauty']) ? 'checked' : '' }} > Beauty<br/>
+                                                <input type="checkbox" name="categories[]"  value="Health" {{ ($categories['Health']) ? 'checked' : '' }} > Health<br/>
+                                                <input type="checkbox" name="categories[]"  value="Family" {{ ($categories['Family']) ? 'checked' : '' }} > Family<br/>
+                                                <input type="checkbox" name="categories[]"  value="House and garden" {{ ($categories['House and garden']) ? 'checked' : '' }} > House and Garden<br/>
+                                                <input type="checkbox" name="categories[]"  value="Cleaning" {{ ($categories['Cleaning']) ? 'checked' : '' }} > Cleaning<br/>
+                                                <input type="checkbox" name="categories[]"  value=" Lifestyle" {{ ($categories['Lifestyle']) ? 'checked' : '' }} > Lifestyle<br/>
+                                                <input type="checkbox" name="categories[]" value="Cars" {{ ($categories['Cars']) ? 'checked' : '' }} > Cars<br/>
+                                                <input type="checkbox" name="categories[]"  value="Crime" {{ ($categories['Crime']) ? 'checked' : '' }} > Crime<br/>
+
+                                                <div class="form-group row mb-0">
+                                                    <div class="col-md-6 offset-3 pt-3">
+                                                        <button type="submit" class="btn btn-primary">
+                                                            {{ __('Submit') }}
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </li>
+                            @endif
+
+
+                            <li class="{{ (request()->is('#')) ? 'strong' : ''}}">
+                                <a class="nav-link nav-link-me" href="#">Trending</a>
+                            </li>
+                            <li class="{{ (request()->is('activity')) ? 'strong' : ''}}">
+                                <a class="nav-link nav-link-me" href="{{ route('activity') }}">Activity</a>
+                            </li>
 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -74,6 +146,8 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">Notifications</a>
+                                    <a class="dropdown-item" href="{{route('my_activity')}}">My Activity</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

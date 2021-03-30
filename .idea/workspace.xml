@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="04ae9b14-beb2-4ddf-8e19-fe1f79266a95" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/facebookData/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/facebookData/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/facebookData/facebookData.php" beforeDir="false" afterPath="$PROJECT_DIR$/facebookData/facebookData.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/app/Http/Controllers/ActivityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/app/Http/Controllers/ActivityController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/app/Http/Controllers/CategoriesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/app/Http/Controllers/CategoriesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/app/Http/Controllers/MyActivtiesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/app/Http/Controllers/MyActivtiesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/app/Http/Controllers/PostsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/app/Http/Controllers/PostsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/app/Models/Categories.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/app/Models/Categories.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/app/Models/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/app/Models/Post.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/resources/views/activity.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/resources/views/activity.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/resources/views/categories.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/resources/views/categories.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/resources/views/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/resources/views/my_activity.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/resources/views/my_activity.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/resources/views/welcome.blade.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/facebookData/composer.json</pharConfigPath>
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/facebookData/vendor/composer" />
+      <path value="$PROJECT_DIR$/facebookData/vendor/facebook/graph-sdk" />
+    </include_path>
+  </component>
+  <component name="ProjectId" id="1qAVKyazQw8EMHH9LkquQ7thhSP" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="04ae9b14-beb2-4ddf-8e19-fe1f79266a95" name="Default Changelist" comment="" />
+      <created>1616522321714</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1616522321714</updated>
+      <workItem from="1616522323195" duration="10043000" />
+      <workItem from="1616607263917" duration="9225000" />
+      <workItem from="1616666294869" duration="4961000" />
+      <workItem from="1616840133119" duration="2031000" />
+      <workItem from="1616879354608" duration="4231000" />
+      <workItem from="1616953634762" duration="6920000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

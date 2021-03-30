@@ -1,12 +1,14 @@
 @extends('layouts.app')
 
+{{-- WELCOME PAGE --}}
+
 @section('content')
 
     <div class="antialiased">
-            <div class="">
+            <div class="hero">
 
                 <div style="background-color: #000">
-                    <img style="opacity: 0.2;" class="m-0" src="pics/pijper.png">
+                    <img style="opacity: 0.2; width: 99vw; height: 93.2vh; object-fit: cover; " class="m-0" src="pics/pijper.png">
                     <h1 style="position: absolute;
                                 top: 44%;
                                 left: 50%;
