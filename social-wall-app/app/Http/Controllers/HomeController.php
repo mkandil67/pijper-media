@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categories;
+use App\Models\Post;
 use App\Models\User;
+
+// This controller shows an authenticated user the posts from the categories he chose from different platforms
 
 class HomeController extends Controller
 {
@@ -20,7 +23,6 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @param User $user
      * @return \Illuminate\Contracts\Support\Renderable
      */
 
@@ -28,7 +30,7 @@ class HomeController extends Controller
     {
         $user = auth()->user();
         $categories = Categories::where('user_id',$user->id)->get()->first();
-
-        return view('home', ['user' => $user], ['categories' => $categories]);
+        $posts = Post::all();
+        return view('home', ['user' => $user, 'posts' => $posts], ['categories' => $categories]);
     }
 }

@@ -1,6 +1,4 @@
-@import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;
-
-400;600&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap);
 @charset "UTF-8";
 
 :root {
@@ -6255,7 +6253,7 @@ a.close.disabled {
 .modal-dialog-centered::before {
   display: block;
   height: calc(100vh - 1rem);
-  height: -webkit-min-content;
+  height: -webkin-min-content;
   height: -moz-min-content;
   height: min-content;
   content: "";
@@ -7005,6 +7003,7 @@ button.bg-primary:focus {
 .bg-secondary {
   background-color: #6c757d !important;
 }
+
 
 a.bg-secondary:hover,
 a.bg-secondary:focus,
