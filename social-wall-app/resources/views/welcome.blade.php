@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+{{-- WELCOME PAGE --}}
+
 @section('content')
 
     <div class="antialiased">

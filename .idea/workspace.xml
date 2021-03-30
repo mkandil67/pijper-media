@@ -2,10 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="04ae9b14-beb2-4ddf-8e19-fe1f79266a95" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/facebookData/trendingCheck.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/facebookData/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/facebookData/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/facebookData/facebookData.php" beforeDir="false" afterPath="$PROJECT_DIR$/facebookData/facebookData.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/social-wall-app/database/migrations/2021_03_19_230331_create_posts_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/database/migrations/2021_03_19_230331_create_posts_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/app/Http/Controllers/ActivityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/app/Http/Controllers/ActivityController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/app/Http/Controllers/CategoriesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/app/Http/Controllers/CategoriesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/app/Http/Controllers/MyActivtiesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/app/Http/Controllers/MyActivtiesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/app/Http/Controllers/PostsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/app/Http/Controllers/PostsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/app/Models/Categories.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/app/Models/Categories.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/app/Models/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/app/Models/Post.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/resources/views/activity.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/resources/views/activity.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/resources/views/categories.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/resources/views/categories.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/resources/views/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/resources/views/my_activity.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/resources/views/my_activity.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/resources/views/welcome.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

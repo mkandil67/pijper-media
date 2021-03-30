@@ -1,4 +1,7 @@
 @extends('layouts.app')
+
+{{-- MY ACTIVITY PAGE --}}
+
 <style>
     * {
         padding: 0;

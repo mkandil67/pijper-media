@@ -29,6 +29,7 @@ $fb = new \Facebook\Facebook([
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////// THIS IS NOT YET FINISHED ////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////
+// Initializing an array of categories
 $categories = array(
     'News',
     'Showbizz/Entertainment',
@@ -45,7 +46,7 @@ $categories = array(
     'Cars',
 //    'Crime',
 );
-
+// Initializing an array of souces inside categories
 $sources = array(
     'News' => array(
         'nos',
@@ -128,7 +129,7 @@ $sources = array(
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////// THIS IS NOT YET FINISHED ////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////
-
+// Looping over each source inside each category to retrieve recent post data
 foreach ($categories as $category) {
     foreach ($sources[$category] as $source) {
         try {
@@ -159,7 +160,7 @@ foreach ($categories as $category) {
 //var_dump($response->getGraphEdge());
 ///////////////////// some debugging stuffs for pagination /////////////////////
 
-
+// Looping over all posts to extract data and filter out posts already in database
         foreach ($data as $post) {
             // IF IT IS AN ENGAGEMENT POST SKIP IT
             if (!array_key_exists('message', $post)) {

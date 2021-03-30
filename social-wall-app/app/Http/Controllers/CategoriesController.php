@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Categories;
 use Illuminate\Http\Request;
 
+// This controller will store correct data regarding a user's chosen categories in our database
+// It will then redirect the user to the home page
 class CategoriesController extends Controller
 {
     public function create()
@@ -15,7 +17,7 @@ class CategoriesController extends Controller
     public function store(Request $request): \Illuminate\Http\RedirectResponse
     {
         $selectedCategories = $request->categories;
-        // initialize insertarray with the standard values
+        // initialize insert array with the standard values
         $insertArray = array(
             'user_id' => $request->user()->id,
             'News' => 0,

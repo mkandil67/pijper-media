@@ -1,4 +1,7 @@
 @extends('layouts.app')
+
+{{-- HOMEPAGE --}}
+
 <style>
     * {
         padding: 0;

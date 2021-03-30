@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
+// This controller will update posts whenever database is updated.
+
 class PostsController extends Controller
 {
     /**
@@ -66,8 +68,7 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
-    {
+    public function update(Request $request) {
         $id = $request->id;
         $post = Post::find($id);
         if (!empty($post->writer_id)){

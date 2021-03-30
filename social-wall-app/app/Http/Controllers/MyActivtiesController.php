@@ -6,6 +6,8 @@ use App\Models\Categories;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
+// This controller will store the authenticated user's activity and help him remove it when he's done.
+
 class MyActivtiesController extends Controller
 {
     /**

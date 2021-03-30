@@ -1,4 +1,7 @@
 @extends('layouts.app')
+
+{{-- ACTIVITY PAGE - TWO VARIATIONS: CAROUSSEL COMMENTED AND NORMAL VIEW NOT COMMENTED --}}
+
 <style>
     * {
         padding: 0;
