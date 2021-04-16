@@ -52,11 +52,11 @@ $sources = array(
 ////        'cnninternational',
     ),
     'Showbizz/Entertainment' => array(
-        'linda.nl'
+        'lindanieuws',
     ),
 //    'Royals',
     'Food/Recipes' => array(
-        'buzzfeedtasty',
+        'tasty',
 ////        'delish',
 ////        'EatThisNotThat',
 ////        'thekitchn',
@@ -80,8 +80,8 @@ $sources = array(
     ),
 //    'Lifehacks',
 //    'Fashion',
-    'Beauty' => array(
-        'hello',
+//    'Beauty' => array(
+////        'hello',
 ////        'GlamourNL',
 ////        'VorstenNL',
 ////        'Royaltynl',
@@ -91,7 +91,7 @@ $sources = array(
 ////        'VogueNL',
 ////        'enews',
 ////        'ModekoninginMaxima',
-    ),
+//    ),
 //    'Health',
 //    'Family',
 //    'House and Garden',
@@ -118,23 +118,36 @@ $sources = array(
 //    'Crime',
 );
 
+$api_base = 'https://api.twitter.com/';
+
+//Set our bearer token. Now issued, this won't ever* change unless it's invalidated by a call to /oauth2/invalidate_token.
+$bearer_token = 'AAAAAAAAAAAAAAAAAAAAACZcOgEAAAAA0zIvzdBz2NLoJFbV6jk%2BFh4XUCE%3DBsw4gI88BSW8NvVY2GS9CrsoKiAKVlLJI4wlrE3rmccMeqHV82';
+
 foreach ($categories as $category) {
     foreach ($sources[$category] as $source) {
 
-        $instagram = new \InstagramScraper\Instagram(new \GuzzleHttp\Client());
-        try {
-            $data = $instagram->getMedias($source);
-        } catch (\InstagramScraper\Exception\InstagramException | InstagramNotFoundException $e) {
-            echo $e->getMessage();
-        }
+        //Try a twitter API request now.
+        $opts = array(
+            'http' => array(
+                'method' => 'GET',
+                'header' => 'Authorization: Bearer ' . $bearer_token
+            )
+        );
+
+        $context = stream_context_create($opts);
+        $json = file_get_contents($api_base . '1.1/statuses/user_timeline.json?count=25&screen_name=' . $source, false, $context);
+
+        $data = json_decode($json, true);
+
+        var_dump($data);
 
         // Looping over all posts to extract data and filter out posts already in database
         foreach ($data as $post) {
 
             // GATHER THE DATA FROM THE POST
             $post_id = $post['id'];
-            $likes = $post['likesCount'] ?? 0;
-            $comments = $post['commentsCount'] ?? 0;
+            $likes = $post['favorite_count'] ?? 0;
+            $retweets = $post['retweet_count'] ?? 0;
 
             // QUERY THE DATABASE FOR A POST WITH THE GIVEN post_id
             $statement = $con->prepare("SELECT * FROM posts WHERE post_id = ?");
@@ -150,7 +163,7 @@ foreach ($categories as $category) {
 
                 //  calculate necessary variables
                 $old_engagement = $old_data['engagement'];
-                $engagement = $comments + $likes;
+                $engagement = $retweets + $likes;
                 $now = date('Y-m-d H:i:s');
 
                 // bind the parameters to a variable
@@ -164,17 +177,23 @@ foreach ($categories as $category) {
 
                 // prepare insert query
                 $query = "INSERT INTO posts (post_id, category, platform, data_source, caption, post_url, image_url, is_trending, followers_count, engagement, old_engagement, writer_id, posted_at,created_at, updated_at)
-            VALUES (?, ?, 'instagram', ?, ?, ?, ?, false, ?, ?, ?, null, ?, ?, ?)";
+            VALUES (?, ?, 'twitter', ?, ?, ?, ?, false, ?, ?, ?, null, ?, ?, ?)";
                 $stmt = $con->prepare( $query );
 
                 //  calculate necessary variables
-                $followers_count = $post['owner']['followedByCount'];
-                $data_source = $post['owner']['username'];
-                $message = $post['caption'];
-                $picture_url = $post['imageThumbnailUrl'];
-                $post_url = $post['link'];
-                $posted_at = date("Y-m-d H:i:s", $post['createdTime']);
-                $engagement = $comments + $likes;
+                $engagement = $retweets + $likes;
+                $followers_count = $post['user']['followers_count'];
+                $data_source = $post['user']['screen_name'];
+                $message = $post['text'];
+                if (array_key_exists("media", $post)) {
+                    $picture_url = $post['media']['media_url'];
+                }
+                else {
+                    $picture_url = $post['user']['profile_image_url'];
+                }
+
+                $post_url = "https://twitter.com/".$post['user']['screen_name'].'/status/'.$post['id'];
+                $posted_at = date_format(date_create_from_format("D M d H:i:s O Y", $post['created_at']), "Y-m-d H:i:s");
                 $now = date("Y-m-d H:i:s");
 
                 // bind the parameters to a variable
@@ -194,5 +213,6 @@ foreach ($categories as $category) {
             // execute our query
             $stmt->execute();
         }
+
     }
 }
