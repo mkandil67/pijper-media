@@ -137,13 +137,44 @@ foreach ($categories as $category) {
         $context = stream_context_create($opts);
         $json = file_get_contents($api_base . '1.1/statuses/user_timeline.json?count=25&screen_name=' . $source, false, $context);
 
+        // get the followers count, posts and the source name of the account
         $data = json_decode($json, true);
+        $data_source = $data[0]['user']['screen_name'];
+        $followers_count = $data[0]['user']['followers_count'];
+        // get the current time
+        $now = date("Y-m-d H:i:s");
 
-        var_dump($data);
+        // query for checking if this account is in the database already
+        $statement = $con->prepare("SELECT * FROM accounts WHERE data_source = ? AND platform = 'twitter'");
+        $statement->execute([$data_source]);
+        $account = $statement->fetch();
+
+        if (is_array($account)) {
+            // account is in the database
+            $query = "UPDATE accounts SET followers_count = ?, updated_at = ? WHERE data_source = ? AND platform = 'twitter'";
+            $stmt = $con->prepare( $query );
+
+            // bind the parameters to a variable
+            $stmt->bindParam(1, $followers_count);
+            $stmt->bindParam(2, $now);
+            $stmt->bindParam(3, $data_source);
+        } else {
+            $query = "INSERT INTO accounts (category, platform, data_source, followers_count, created_at, updated_at)
+            VALUES (?,'twitter', ?, ?, ?, ?)";
+            $stmt = $con->prepare( $query );
+
+            // bind the parameters to a variable
+            $stmt->bindParam(1, $category);
+            $stmt->bindParam(2, $data_source);
+            $stmt->bindParam(3, $followers_count);
+            $stmt->bindParam(4, $now);
+            $stmt->bindParam(5, $now);
+        }
+        // execute our query
+        $stmt->execute();
 
         // Looping over all posts to extract data and filter out posts already in database
         foreach ($data as $post) {
-
             // GATHER THE DATA FROM THE POST
             $post_id = $post['id'];
             $likes = $post['favorite_count'] ?? 0;
@@ -164,7 +195,6 @@ foreach ($categories as $category) {
                 //  calculate necessary variables
                 $old_engagement = $old_data['engagement'];
                 $engagement = $retweets + $likes;
-                $now = date('Y-m-d H:i:s');
 
                 // bind the parameters to a variable
                 $stmt->bindParam(1, $engagement);
@@ -175,15 +205,18 @@ foreach ($categories as $category) {
                 // POST IS NOT IN DATABASE, SO ADD IT
                 echo "Added post to database\n";
 
+                // get the account id
+                $statement = $con->prepare("SELECT id FROM accounts WHERE platform = 'twitter' AND data_source = ?");
+                $statement->execute([$data_source]);
+                $account_id = $statement->fetch()['id'];
+
                 // prepare insert query
-                $query = "INSERT INTO posts (post_id, category, platform, data_source, caption, post_url, image_url, is_trending, followers_count, engagement, old_engagement, writer_id, posted_at,created_at, updated_at)
-            VALUES (?, ?, 'twitter', ?, ?, ?, ?, false, ?, ?, ?, null, ?, ?, ?)";
+                $query = "INSERT INTO posts (post_id, caption, post_url, image_url, is_trending, engagement, old_engagement, writer_id, posted_at, account_id, created_at, updated_at)
+            VALUES (?, ?, ?, ?, false, ?, ?, null, ?, ?, ?, ?)";
                 $stmt = $con->prepare( $query );
 
                 //  calculate necessary variables
                 $engagement = $retweets + $likes;
-                $followers_count = $post['user']['followers_count'];
-                $data_source = $post['user']['screen_name'];
                 $message = $post['text'];
                 if (array_key_exists("media", $post)) {
                     $picture_url = $post['media']['media_url'];
@@ -191,24 +224,20 @@ foreach ($categories as $category) {
                 else {
                     $picture_url = $post['user']['profile_image_url'];
                 }
-
                 $post_url = "https://twitter.com/".$post['user']['screen_name'].'/status/'.$post['id'];
                 $posted_at = date_format(date_create_from_format("D M d H:i:s O Y", $post['created_at']), "Y-m-d H:i:s");
-                $now = date("Y-m-d H:i:s");
 
                 // bind the parameters to a variable
                 $stmt->bindParam(1, $post_id);
-                $stmt->bindParam(2, $category);
-                $stmt->bindParam(3, $data_source);
-                $stmt->bindParam(4, $message);
-                $stmt->bindParam(5, $post_url);
-                $stmt->bindParam(6, $picture_url);
-                $stmt->bindParam(7, $followers_count);
-                $stmt->bindParam(8, $engagement);
-                $stmt->bindParam(9, $engagement);
-                $stmt->bindParam(10, $posted_at);
-                $stmt->bindParam(11, $now);
-                $stmt->bindParam(12, $now);
+                $stmt->bindParam(2, $message);
+                $stmt->bindParam(3, $post_url);
+                $stmt->bindParam(4, $picture_url);
+                $stmt->bindParam(5, $engagement);
+                $stmt->bindParam(6, $engagement);
+                $stmt->bindParam(7, $posted_at);
+                $stmt->bindParam(8, $account_id);
+                $stmt->bindParam(9, $now);
+                $stmt->bindParam(10, $now);
             }
             // execute our query
             $stmt->execute();

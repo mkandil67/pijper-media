@@ -1,6 +1,6 @@
 {
     "require": {
-        "raiym/instagram-php-scraper": "^0.11.1",
-        "guzzlehttp/guzzle": "^7.0"
+        "guzzlehttp/guzzle": "^7.3",
+        "raiym/instagram-php-scraper": "^0.11.1"
     }
 }

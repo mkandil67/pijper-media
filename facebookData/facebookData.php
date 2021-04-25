@@ -1,5 +1,7 @@
 <?php
 // 1. database credentials
+
+
 $host = "127.0.0.1";
 $db_name = "users-pijper";
 $username = "root";
@@ -146,19 +148,43 @@ foreach ($categories as $category) {
             echo 'Facebook SDK returned an error: ' . $e->getMessage();
             exit;
         }
-//        var_dump(array_values($response->getDecodedBody())[0]['data']);
 
+        // get the followers count, posts and the source name of the account
         $followers_count = array_values($response->getDecodedBody())[0];
-
         $data = array_values($response->getDecodedBody())[1]['data'];
+        $data_source = $data[0]["from"]["name"];
+        // get the current time
+        $now = date("Y-m-d H:i:s");
 
-///////////////////// some debugging stuffs for pagination /////////////////////
-//$paging = array_values($response->getDecodedBody())[1];
-//$edge = $response->getGraphEdge();
-//var_dump($paging);
-//var_dump($data);
-//var_dump($response->getGraphEdge());
-///////////////////// some debugging stuffs for pagination /////////////////////
+        // query for checking if this account is in the database already
+        $statement = $con->prepare("SELECT * FROM accounts WHERE data_source = ? AND platform = 'facebook'");
+        $statement->execute([$data_source]);
+        $account = $statement->fetch();
+
+        if (is_array($account)) {
+            // account is in the database
+            $query = "UPDATE accounts SET followers_count = ?, updated_at = ? WHERE data_source = ? AND platform = 'facebook'";
+            $stmt = $con->prepare( $query );
+
+            // bind the parameters to a variable
+            $stmt->bindParam(1, $followers_count);
+            $stmt->bindParam(2, $now);
+            $stmt->bindParam(3, $data_source);
+        } else {
+            // account is not in the database
+            $query = "INSERT INTO accounts (category, platform, data_source, followers_count, created_at, updated_at)
+            VALUES (?,'facebook', ?, ?, ?, ?)";
+            $stmt = $con->prepare( $query );
+
+            // bind the parameters to a variable
+            $stmt->bindParam(1, $category);
+            $stmt->bindParam(2, $data_source);
+            $stmt->bindParam(3, $followers_count);
+            $stmt->bindParam(4, $now);
+            $stmt->bindParam(5, $now);
+        }
+        // execute our query
+        $stmt->execute();
 
 // Looping over all posts to extract data and filter out posts already in database
         foreach ($data as $post) {
@@ -187,31 +213,33 @@ foreach ($categories as $category) {
                 echo "Updated post data\n";
 
                 // prepare update query
-                $query = "UPDATE posts SET followers_count = ?, engagement = ?, old_engagement = ?, updated_at = ? WHERE post_id = ?";
+                $query = "UPDATE posts SET engagement = ?, old_engagement = ?, updated_at = ? WHERE post_id = ?";
                 $stmt = $con->prepare( $query );
 
                 //  calculate necessary variables
                 $old_engagement = $old_data['engagement'];
                 $engagement = $shares + $comments + $likes;
-                $now = date('Y-m-d H:i:s');
 
                 // bind the parameters to a variable
-                $stmt->bindParam(1, $followers_count);
-                $stmt->bindParam(2, $engagement);
-                $stmt->bindParam(3, $old_engagement);
-                $stmt->bindParam(4, $now);
-                $stmt->bindParam(5, $post_id);
+                $stmt->bindParam(1, $engagement);
+                $stmt->bindParam(2, $old_engagement);
+                $stmt->bindParam(3, $now);
+                $stmt->bindParam(4, $post_id);
             } else {
                 // POST IS NOT IN DATABASE, SO ADD IT
                 echo "Added post to database\n";
 
+                // get the account id corresponding to the post
+                $statement = $con->prepare("SELECT id FROM accounts WHERE platform = 'facebook' AND data_source = ?");
+                $statement->execute([$data_source]);
+                $account_id = $statement->fetch()['id'];
+
                 // prepare insert query
-                $query = "INSERT INTO posts (post_id, category, platform, data_source, caption, post_url, image_url, is_trending, followers_count, engagement, old_engagement, writer_id, posted_at,created_at, updated_at)
-            VALUES (?, ?, 'facebook', ?, ?, ?, ?, false, ?, ?, ?, null, ?, ?, ?)";
+                $query = "INSERT INTO posts (post_id, caption, post_url, image_url, is_trending, engagement, old_engagement, writer_id, posted_at, account_id, created_at, updated_at)
+            VALUES (?, ?, ?, ?, false, ?, ?, null, ?, ?, ?, ?)";
                 $stmt = $con->prepare( $query );
 
                 //  calculate necessary variables
-                $data_source = $post['from']['name'];
                 $message = $post['message'];
                 $picture_url = $post['picture'];
                 $post_url = $post['permalink_url'];
@@ -219,21 +247,18 @@ foreach ($categories as $category) {
                 $posted_at = str_replace('T', ' ', $post['created_time']);
                 $posted_at = str_replace('+0000', '', $post['created_time']);
                 $engagement = $shares + $comments + $likes;
-                $now = date("Y-m-d H:i:s");
 
                 // bind the parameters to a variable
                 $stmt->bindParam(1, $post_id);
-                $stmt->bindParam(2, $category);
-                $stmt->bindParam(3, $data_source);
-                $stmt->bindParam(4, $message);
-                $stmt->bindParam(5, $post_url);
-                $stmt->bindParam(6, $picture_url);
-                $stmt->bindParam(7, $followers_count);
-                $stmt->bindParam(8, $engagement);
-                $stmt->bindParam(9, $engagement);
-                $stmt->bindParam(10, $posted_at);
-                $stmt->bindParam(11, $now);
-                $stmt->bindParam(12, $now);
+                $stmt->bindParam(2, $message);
+                $stmt->bindParam(3, $post_url);
+                $stmt->bindParam(4, $picture_url);
+                $stmt->bindParam(5, $engagement);
+                $stmt->bindParam(6, $engagement);
+                $stmt->bindParam(7, $posted_at);
+                $stmt->bindParam(8, $account_id);
+                $stmt->bindParam(9, $now);
+                $stmt->bindParam(10, $now);
             }
             // execute our query
             $stmt->execute();

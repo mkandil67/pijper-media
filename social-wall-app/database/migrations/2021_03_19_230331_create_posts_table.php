@@ -16,21 +16,19 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string("post_id")->unique();
-            $table->string("category");
-            $table->string("platform");
-            $table->string("data_source");
+
             $table->text("caption");
             $table->text("post_url");
             $table->text("image_url") -> nullable();
             $table->boolean("is_trending");
-            $table->unsignedBigInteger("followers_count");
             $table->unsignedBigInteger("engagement");
             $table->unsignedBigInteger("old_engagement");
             $table->unsignedBigInteger("writer_id")->nullable();
             $table->dateTime("posted_at");
+            $table->unsignedBigInteger("account_id");
             $table->timestamps();
 
-
+            $table->foreign('account_id')->references('id')->on('accounts');
             $table->foreign('writer_id')->references('id')->on('users');
 
         });

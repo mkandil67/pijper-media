@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '6ee8d3aa9f0bf2f2164d403032e9946474af9026',
+    'reference' => '3775b62f9998accbb13329b922ed324241b6eae5',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -189,12 +189,12 @@
     ),
     'guzzlehttp/psr7' => 
     array (
-      'pretty_version' => '1.7.0',
-      'version' => '1.7.0.0',
+      'pretty_version' => '1.8.1',
+      'version' => '1.8.1.0',
       'aliases' => 
       array (
       ),
-      'reference' => '53330f47520498c0ae1f61f7e2c90f55690c06a3',
+      'reference' => '35ea11d335fd638b5882ff1725228b3d35496ab1',
     ),
     'hamcrest/hamcrest-php' => 
     array (
@@ -445,7 +445,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '6ee8d3aa9f0bf2f2164d403032e9946474af9026',
+      'reference' => '3775b62f9998accbb13329b922ed324241b6eae5',
     ),
     'laravel/sail' => 
     array (
@@ -769,8 +769,8 @@
     array (
       'provided' => 
       array (
-        0 => '1.0',
-        1 => '1.0.0',
+        0 => '1.0.0',
+        1 => '1.0',
       ),
     ),
     'psr/simple-cache' => 
@@ -790,6 +790,15 @@
       array (
       ),
       'reference' => 'a395af46999a12006213c0c8346c9445eb31640c',
+    ),
+    'raiym/instagram-php-scraper' => 
+    array (
+      'pretty_version' => 'v0.11.1',
+      'version' => '0.11.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'c3de997d13f1b31c7bea47fbf0da463b26eaa228',
     ),
     'ralouphie/getallheaders' => 
     array (
