@@ -159,6 +159,7 @@ foreach ($categories as $category) {
             $stmt->bindParam(2, $now);
             $stmt->bindParam(3, $data_source);
         } else {
+            // account is not in the database
             $query = "INSERT INTO accounts (category, platform, data_source, followers_count, created_at, updated_at)
             VALUES (?,'twitter', ?, ?, ?, ?)";
             $stmt = $con->prepare( $query );
@@ -172,6 +173,11 @@ foreach ($categories as $category) {
         }
         // execute our query
         $stmt->execute();
+
+        // get the account id
+        $statement = $con->prepare("SELECT id FROM accounts WHERE platform = 'twitter' AND data_source = ?");
+        $statement->execute([$data_source]);
+        $account_id = $statement->fetch()['id'];
 
         // Looping over all posts to extract data and filter out posts already in database
         foreach ($data as $post) {
@@ -204,11 +210,6 @@ foreach ($categories as $category) {
             } else {
                 // POST IS NOT IN DATABASE, SO ADD IT
                 echo "Added post to database\n";
-
-                // get the account id
-                $statement = $con->prepare("SELECT id FROM accounts WHERE platform = 'twitter' AND data_source = ?");
-                $statement->execute([$data_source]);
-                $account_id = $statement->fetch()['id'];
 
                 // prepare insert query
                 $query = "INSERT INTO posts (post_id, caption, post_url, image_url, is_trending, engagement, old_engagement, writer_id, posted_at, account_id, created_at, updated_at)

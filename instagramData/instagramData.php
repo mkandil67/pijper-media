@@ -128,39 +128,31 @@ foreach ($categories as $category) {
             echo $e->getMessage();
         }
 
+        // get the followers count and the source name of the account
+        $followers_count = $data[0]['owner']['followedByCount'];
         $data_source = $data[0]['owner']['username'];
+        // get the current time
+        $now = date('Y-m-d H:i:s');
 
+        // query for checking if this account is in the database already
         $statement = $con->prepare("SELECT * FROM accounts WHERE data_source = ? AND platform = 'instagram'");
         $statement->execute([$data_source]);
         $account = $statement->fetch();
 
         if (is_array($account)) {
+            // account is in the database
             $query = "UPDATE accounts SET followers_count = ?, updated_at = ? WHERE data_source = ? AND platform = 'instagram'";
             $stmt = $con->prepare( $query );
-
-            //  calculate necessary variables
-
-            $now = date('Y-m-d H:i:s');
-            $data_source = $data[0]['owner']['username'];
-            $followers_count = $data[0]['owner']['followedByCount'];
 
             // bind the parameters to a variable
             $stmt->bindParam(1, $followers_count);
             $stmt->bindParam(2, $now);
             $stmt->bindParam(3, $data_source);
         } else {
+            // account is not in the database
             $query = "INSERT INTO accounts (category, platform, data_source, followers_count, created_at, updated_at)
             VALUES (?,'instagram', ?, ?, ?, ?)";
             $stmt = $con->prepare( $query );
-
-            //  calculate necessary variables
-            $now = date("Y-m-d H:i:s");
-            $data_source = $data[0]['owner']['username'];
-            if ($data_source == null) {
-                echo "skip lmao\n";
-                continue;
-            }
-            $followers_count = $data[0]['owner']['followedByCount'];
 
             // bind the parameters to a variable
             $stmt->bindParam(1, $category);
@@ -168,10 +160,14 @@ foreach ($categories as $category) {
             $stmt->bindParam(3, $followers_count);
             $stmt->bindParam(4, $now);
             $stmt->bindParam(5, $now);
-
-            // execute our query
-            $stmt->execute();
         }
+        // execute our query
+        $stmt->execute();
+
+        // get the account id corresponding to the source
+        $statement = $con->prepare("SELECT id FROM accounts WHERE platform = 'instagram' AND data_source = ?");
+        $statement->execute([$data_source]);
+        $account_id = $statement->fetch()['id'];
 
         // Looping over all posts to extract data and filter out posts already in database
         foreach ($data as $post) {
@@ -195,7 +191,6 @@ foreach ($categories as $category) {
                 //  calculate necessary variables
                 $old_engagement = $old_data['engagement'];
                 $engagement = $comments + $likes;
-                $now = date('Y-m-d H:i:s');
 
                 // bind the parameters to a variable
                 $stmt->bindParam(1, $engagement);
@@ -206,24 +201,17 @@ foreach ($categories as $category) {
                 // POST IS NOT IN DATABASE, SO ADD IT
                 echo "Added post to database\n";
 
-                $statement = $con->prepare("SELECT id FROM accounts WHERE platform = 'instagram' AND data_source = ?");
-                $statement->execute([$data_source]);
-                $account_id = $statement->fetch();
-
                 // prepare insert query
                 $query = "INSERT INTO posts (post_id, caption, post_url, image_url, is_trending, engagement, old_engagement, writer_id, posted_at, account_id, created_at, updated_at)
             VALUES (?, ?, ?, ?, false, ?, ?, null, ?, ?, ?, ?)";
                 $stmt = $con->prepare( $query );
 
                 //  calculate necessary variables
-
                 $message = $post['caption'];
                 $picture_url = $post['imageThumbnailUrl'];
                 $post_url = $post['link'];
                 $posted_at = date("Y-m-d H:i:s", $post['createdTime']);
                 $engagement = $comments + $likes;
-                $now = date("Y-m-d H:i:s");
-                $account_id = $account_id["id"];
 
                 // bind the parameters to a variable
                 $stmt->bindParam(1, $post_id);

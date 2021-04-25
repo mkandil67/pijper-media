@@ -186,7 +186,12 @@ foreach ($categories as $category) {
         // execute our query
         $stmt->execute();
 
-// Looping over all posts to extract data and filter out posts already in database
+        // get the account id corresponding to the source
+        $statement = $con->prepare("SELECT id FROM accounts WHERE platform = 'facebook' AND data_source = ?");
+        $statement->execute([$data_source]);
+        $account_id = $statement->fetch()['id'];
+
+        // Looping over all posts to extract data and filter out posts already in database
         foreach ($data as $post) {
             // IF IT IS AN ENGAGEMENT POST SKIP IT
             if (!array_key_exists('message', $post)) {
@@ -228,11 +233,6 @@ foreach ($categories as $category) {
             } else {
                 // POST IS NOT IN DATABASE, SO ADD IT
                 echo "Added post to database\n";
-
-                // get the account id corresponding to the post
-                $statement = $con->prepare("SELECT id FROM accounts WHERE platform = 'facebook' AND data_source = ?");
-                $statement->execute([$data_source]);
-                $account_id = $statement->fetch()['id'];
 
                 // prepare insert query
                 $query = "INSERT INTO posts (post_id, caption, post_url, image_url, is_trending, engagement, old_engagement, writer_id, posted_at, account_id, created_at, updated_at)
