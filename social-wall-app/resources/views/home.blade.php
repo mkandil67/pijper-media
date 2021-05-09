@@ -156,7 +156,7 @@
                     <div class="container-fluid" id="postsCard">
                         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
                             @foreach(App\Models\Post::where('writer_id','=',null)->orderBy('posted_at','desc')->get() as $post)
-                                @if($categories[$post->category] && strtolower($post->platform)=='facebook')
+                                @if($categories[$post->category] && strtolower(App\Models\Accounts::where('id','=',$post->account_id)->first()->platform)=='facebook')
                                     <div class="card shadow-sm m-1 mb-5 ">
                                         <div class="card-header d-flex justify-content-between">
                                             @if(strtolower($post->platform) == 'facebook')
