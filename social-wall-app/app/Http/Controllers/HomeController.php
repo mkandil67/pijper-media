@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categories;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Accounts;
 
 // This controller shows an authenticated user the posts from the categories he chose from different platforms
 
@@ -30,7 +31,8 @@ class HomeController extends Controller
     {
         $user = auth()->user();
         $categories = Categories::where('user_id',$user->id)->get()->first();
+        $accounts = Accounts::all();
         $posts = Post::all();
-        return view('home', ['user' => $user, 'posts' => $posts], ['categories' => $categories]);
+        return view('home', ['user' => $user, 'posts' => $posts, 'accounts' => $accounts], ['categories' => $categories]);
     }
 }
