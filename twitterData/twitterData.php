@@ -148,7 +148,7 @@ foreach ($categories as $category) {
         $statement = $con->prepare("SELECT * FROM accounts WHERE data_source = ? AND platform = 'twitter'");
         $statement->execute([$data_source]);
         $account = $statement->fetch();
-
+        var_dump($data);
         if (is_array($account)) {
             // account is in the database
             $query = "UPDATE accounts SET followers_count = ?, updated_at = ? WHERE data_source = ? AND platform = 'twitter'";
@@ -219,10 +219,8 @@ foreach ($categories as $category) {
                 //  calculate necessary variables
                 $engagement = $retweets + $likes;
                 $message = $post['text'];
-                if (array_key_exists("media", $post)) {
-                    $picture_url = $post['media']['media_url'];
-                }
-                else {
+                $picture_url = $post['entities']['media'][0]['media_url'];
+                if ($picture_url == "") {
                     $picture_url = $post['user']['profile_image_url'];
                 }
                 $post_url = "https://twitter.com/".$post['user']['screen_name'].'/status/'.$post['id'];
