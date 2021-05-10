@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '0c5bf197127c6c22dc164f6bd29ae7cfc1d86db8',
+    'reference' => '3d52b17c1c99b697af4f19d25ea390881c62d8e3',
     'name' => '__root__',
   ),
   'versions' => 
@@ -42,7 +42,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '0c5bf197127c6c22dc164f6bd29ae7cfc1d86db8',
+      'reference' => '3d52b17c1c99b697af4f19d25ea390881c62d8e3',
     ),
     'guzzlehttp/guzzle' => 
     array (
