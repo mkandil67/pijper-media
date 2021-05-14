@@ -202,8 +202,8 @@ foreach ($categories as $category) {
                 echo "Added post to database\n";
 
                 // prepare insert query
-                $query = "INSERT INTO posts (post_id, caption, post_url, image_url, is_trending, engagement, old_engagement, writer_id, posted_at, account_id, created_at, updated_at)
-            VALUES (?, ?, ?, ?, false, ?, ?, null, ?, ?, ?, ?)";
+                $query = "INSERT INTO posts (post_id, caption, post_url, image_url, is_trending, is_viral, engagement, old_engagement, writer_id, posted_at, account_id, created_at, updated_at)
+            VALUES (?, ?, ?, ?, false, false, ?, ?, null, ?, ?, ?, ?)";
                 $stmt = $con->prepare( $query );
 
                 //  calculate necessary variables

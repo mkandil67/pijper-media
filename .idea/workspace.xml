@@ -5,7 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/facebookData/facebookData.php" beforeDir="false" afterPath="$PROJECT_DIR$/facebookData/facebookData.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/instagramData/instagramData.php" beforeDir="false" afterPath="$PROJECT_DIR$/instagramData/instagramData.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/social-wall-app/storage/logs/laravel.log" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/storage/logs/laravel.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/database/migrations/2021_03_19_230331_create_posts_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/database/migrations/2021_03_19_230331_create_posts_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/twitterData/twitterData.php" beforeDir="false" afterPath="$PROJECT_DIR$/twitterData/twitterData.php" afterDir="false" />
     </list>
     <list id="0aa935d0-9654-4f4f-a0fa-06f0e07814b7" name="Changes by Jeroen" comment="" />
@@ -69,6 +69,7 @@
       <workItem from="1619356049330" duration="6021000" />
       <workItem from="1619362108675" duration="1271000" />
       <workItem from="1619363885692" duration="2034000" />
+      <workItem from="1620988833334" duration="259000" />
     </task>
     <servers />
   </component>
