@@ -24,6 +24,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        $schedule->exec('php -f ../facebookData/facebookData.php')->everyTwoMinutes();
+        $schedule->exec('php -f ../twitterData/twitterData.php')->everyTwoMinutes();
+        $schedule->exec('php -f ../instagramData/instagramData.php')->everyTwoMinutes();
         // $schedule->command('inspire')->hourly();
     }
 

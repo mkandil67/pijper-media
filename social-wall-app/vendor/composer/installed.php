@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '3775b62f9998accbb13329b922ed324241b6eae5',
+    'reference' => 'a66f023a29b3a821a0ed3fb18e4be2c27eeed15c',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -123,6 +123,15 @@
       array (
       ),
       'reference' => '3c921a1cdba35b68a7f0ccffc6dffc1995b18267',
+    ),
+    'facebook/graph-sdk' => 
+    array (
+      'pretty_version' => '5.1.4',
+      'version' => '5.1.4.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '38fd7187a6704d3ab14ded2f3a534ac4ee6f3481',
     ),
     'fakerphp/faker' => 
     array (
@@ -445,7 +454,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '3775b62f9998accbb13329b922ed324241b6eae5',
+      'reference' => 'a66f023a29b3a821a0ed3fb18e4be2c27eeed15c',
     ),
     'laravel/sail' => 
     array (

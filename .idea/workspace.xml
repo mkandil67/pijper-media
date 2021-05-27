@@ -3,10 +3,50 @@
   <component name="ChangeListManager">
     <list default="true" id="04ae9b14-beb2-4ddf-8e19-fe1f79266a95" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/facebookData/facebookData.php" beforeDir="false" afterPath="$PROJECT_DIR$/facebookData/facebookData.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instagramData/instagramData.php" beforeDir="false" afterPath="$PROJECT_DIR$/instagramData/instagramData.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/social-wall-app/database/migrations/2021_03_19_230331_create_posts_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/database/migrations/2021_03_19_230331_create_posts_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/twitterData/twitterData.php" beforeDir="false" afterPath="$PROJECT_DIR$/twitterData/twitterData.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/app/Console/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/app/Console/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/vendor/autoload.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/vendor/autoload.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/vendor/bin/carbon" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/vendor/bin/carbon" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/vendor/bin/commonmark" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/vendor/bin/commonmark" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/vendor/bin/php-parse" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/vendor/bin/php-parse" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/vendor/bin/phpunit" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/vendor/bin/phpunit" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/vendor/bin/psysh" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/vendor/bin/psysh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/vendor/bin/var-dump-server" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/vendor/bin/var-dump-server" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/vendor/composer/ClassLoader.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/vendor/composer/ClassLoader.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/vendor/composer/InstalledVersions.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/vendor/composer/InstalledVersions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/vendor/composer/autoload_classmap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/vendor/composer/autoload_files.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/vendor/composer/autoload_files.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/vendor/composer/autoload_psr4.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/vendor/composer/autoload_real.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/vendor/composer/autoload_real.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/vendor/composer/autoload_static.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/vendor/composer/installed.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/vendor/composer/installed.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/AppendStream.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/AppendStream.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/BufferStream.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/BufferStream.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/CachingStream.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/CachingStream.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/DroppingStream.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/DroppingStream.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/FnStream.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/FnStream.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/InflateStream.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/InflateStream.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/LazyOpenStream.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/LazyOpenStream.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/LimitStream.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/LimitStream.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/MultipartStream.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/MultipartStream.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/NoSeekStream.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/NoSeekStream.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/PumpStream.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/PumpStream.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/Query.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/Query.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/Request.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/Request.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/Response.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/Response.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/Rfc7230.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/Rfc7230.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/ServerRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/ServerRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/StreamDecoratorTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/StreamDecoratorTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/StreamWrapper.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/StreamWrapper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/UploadedFile.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/UploadedFile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/Uri.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/Uri.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/UriNormalizer.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/UriNormalizer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/UriResolver.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/UriResolver.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/Utils.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/Utils.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/vendor/guzzlehttp/psr7/src/functions.php" afterDir="false" />
     </list>
     <list id="0aa935d0-9654-4f4f-a0fa-06f0e07814b7" name="Changes by Jeroen" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -69,7 +109,9 @@
       <workItem from="1619356049330" duration="6021000" />
       <workItem from="1619362108675" duration="1271000" />
       <workItem from="1619363885692" duration="2034000" />
-      <workItem from="1620988833334" duration="259000" />
+      <workItem from="1620988833334" duration="649000" />
+      <workItem from="1621626720552" duration="3428000" />
+      <workItem from="1622116275702" duration="3246000" />
     </task>
     <servers />
   </component>
