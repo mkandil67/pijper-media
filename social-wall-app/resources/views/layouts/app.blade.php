@@ -137,7 +137,10 @@
                                 <a class="nav-link nav-link-me" href="#">Trending</a>
                             </li>
                             <li class="{{ (request()->is('activity')) ? 'strong' : ''}}">
-                                <a class="nav-link nav-link-me" href="{{ route('activity') }}">Activity</a>
+                               <a class="nav-link nav-link-me" href="{{ route('activity') }}">Activity</a>
+                            </li>
+                            <li class="{{ (request()->is('calendar')) ? 'strong' : ''}}">
+                                <a class="nav-link nav-link-me" href="{{ route('calendar') }}">Calendar</a>
                             </li>
 
                             <li class="nav-item dropdown">
