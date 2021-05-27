@@ -721,6 +721,7 @@ table.fc-header{
 
 /* for vertical events */
 
+
 .fc-event-bg {
     display: none !important;
 }
@@ -728,5 +729,4 @@ table.fc-header{
 .fc-event .ui-resizable-handle {
     display: none !important;
 }
-
 
