@@ -14,10 +14,14 @@ class CreatePostsTable extends Migration
     public function up()
     {
         Schema::create('posts', function (Blueprint $table) {
+            //allow emoji's and
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_unicode_ci';
+
             $table->id();
             $table->string("post_id")->unique();
 
-            $table->text("caption");
+            $table->binary("caption");
             $table->text("post_url");
             $table->text("image_url") -> nullable();
             $table->boolean("is_trending");
@@ -31,6 +35,8 @@ class CreatePostsTable extends Migration
 
             $table->foreign('account_id')->references('id')->on('accounts');
             $table->foreign('writer_id')->references('id')->on('users');
+
+
 
         });
     }

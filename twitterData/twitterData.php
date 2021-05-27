@@ -148,7 +148,7 @@ foreach ($categories as $category) {
         $statement = $con->prepare("SELECT * FROM accounts WHERE data_source = ? AND platform = 'twitter'");
         $statement->execute([$data_source]);
         $account = $statement->fetch();
-        var_dump($data);
+        //debugging: var_dump($data);
         if (is_array($account)) {
             // account is in the database
             $query = "UPDATE accounts SET followers_count = ?, updated_at = ? WHERE data_source = ? AND platform = 'twitter'";
