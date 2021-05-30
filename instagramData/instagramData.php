@@ -1,4 +1,5 @@
 <?php
+
 // 1. database credentials
 use InstagramScraper\Exception\InstagramNotFoundException;
 
@@ -138,6 +139,7 @@ foreach ($categories as $category) {
         $statement = $con->prepare("SELECT * FROM accounts WHERE data_source = ? AND platform = 'instagram'");
         $statement->execute([$data_source]);
         $account = $statement->fetch();
+        var_dump($data[0]);
 
         if (is_array($account)) {
             // account is in the database
@@ -208,7 +210,9 @@ foreach ($categories as $category) {
 
                 //  calculate necessary variables
                 $message = $post['caption'];
-                $picture_url = $post['imageThumbnailUrl'];
+                $picture_url = $post['imageStandardResolutionUrl'];
+                $imageData = base64_encode(file_get_contents($picture_url));
+                $src = 'data: '.mime_content_type($picture_url).';base64,'.$imageData;
                 $post_url = $post['link'];
                 $posted_at = date("Y-m-d H:i:s", $post['createdTime']);
                 $engagement = $comments + $likes;
@@ -217,7 +221,7 @@ foreach ($categories as $category) {
                 $stmt->bindParam(1, $post_id);
                 $stmt->bindParam(2, $message);
                 $stmt->bindParam(3, $post_url);
-                $stmt->bindParam(4, $picture_url);
+                $stmt->bindParam(4, $src);
                 $stmt->bindParam(5, $engagement);
                 $stmt->bindParam(6, $engagement);
                 $stmt->bindParam(7, $posted_at);
