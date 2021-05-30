@@ -23,7 +23,7 @@ class CreatePostsTable extends Migration
 
             $table->binary("caption");
             $table->text("post_url");
-            $table->text("image_url") -> nullable();
+            $table->mediumText("image_url") -> nullable();
             $table->boolean("is_trending");
             $table->boolean("is_viral");
             $table->unsignedBigInteger("engagement");
