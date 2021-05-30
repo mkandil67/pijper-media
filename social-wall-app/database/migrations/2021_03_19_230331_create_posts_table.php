@@ -36,8 +36,6 @@ class CreatePostsTable extends Migration
             $table->foreign('account_id')->references('id')->on('accounts');
             $table->foreign('writer_id')->references('id')->on('users');
 
-
-
         });
     }
 

@@ -10,8 +10,7 @@ use App\Models\User;
 
 // This controller will show activities of different users to the authenticated user
 
-class ActivityController extends Controller
-{
+class ActivityController extends Controller {
     public function index(): \Illuminate\Contracts\Support\Renderable
     {
         $user = auth()->user();

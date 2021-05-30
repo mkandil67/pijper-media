@@ -25,9 +25,10 @@ class Kernel extends HttpKernel
 
     protected function schedule(Schedule $schedule)
     {
-        $schedule->exec('php -f ../facebookData/facebookData.php')->everyMinute();
-        $schedule->exec('php -f ../twitterData/twitterData.php')->everyMinute();
-        $schedule->exec('php -f ../instagramData/instagramData.php')->everyMinute();
+        $schedule->exec('php -f ../facebookData/facebookData.php')->everyTenMinutes();
+        $schedule->exec('php -f ../twitterData/twitterData.php')->everyTenMinutes();
+        $schedule->exec('php -f ../instagramData/instagramData.php')->everyTenMinutes();
+
     }
 
     /**
