@@ -23,6 +23,13 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
     ];
 
+    protected function schedule(Schedule $schedule)
+    {
+        $schedule->exec('php -f ../facebookData/facebookData.php')->everyMinute();
+        $schedule->exec('php -f ../twitterData/twitterData.php')->everyMinute();
+        $schedule->exec('php -f ../instagramData/instagramData.php')->everyMinute();
+    }
+
     /**
      * The application's route middleware groups.
      *

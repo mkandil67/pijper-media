@@ -221,7 +221,7 @@ foreach ($categories as $category) {
                 $message = $post['text'];
                 $picture_url = $post['entities']['media'][0]['media_url'];
                 if ($picture_url == "") {
-                    $picture_url = $post['user']['profile_image_url'];
+                    $picture_url = "https://help.twitter.com/content/dam/help-twitter/brand/logo.png";
                 }
                 $post_url = "https://twitter.com/".$post['user']['screen_name'].'/status/'.$post['id'];
                 $posted_at = date_format(date_create_from_format("D M d H:i:s O Y", $post['created_at']), "Y-m-d H:i:s");

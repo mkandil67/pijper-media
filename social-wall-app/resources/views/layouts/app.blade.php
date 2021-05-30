@@ -132,10 +132,6 @@
                                 </li>
                             @endif
 
-
-                            <li class="{{ (request()->is('#')) ? 'strong' : ''}}">
-                                <a class="nav-link nav-link-me" href="#">Trending</a>
-                            </li>
                             <li class="{{ (request()->is('activity')) ? 'strong' : ''}}">
                                <a class="nav-link nav-link-me" href="{{ route('activity') }}">Activity</a>
                             </li>

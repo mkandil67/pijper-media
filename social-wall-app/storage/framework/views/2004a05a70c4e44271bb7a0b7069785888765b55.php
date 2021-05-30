@@ -133,12 +133,11 @@
                                 </li>
                             <?php endif; ?>
 
-
-                            <li class="<?php echo e((request()->is('#')) ? 'strong' : ''); ?>">
-                                <a class="nav-link nav-link-me" href="#">Trending</a>
-                            </li>
                             <li class="<?php echo e((request()->is('activity')) ? 'strong' : ''); ?>">
-                                <a class="nav-link nav-link-me" href="<?php echo e(route('activity')); ?>">Activity</a>
+                               <a class="nav-link nav-link-me" href="<?php echo e(route('activity')); ?>">Activity</a>
+                            </li>
+                            <li class="<?php echo e((request()->is('calendar')) ? 'strong' : ''); ?>">
+                                <a class="nav-link nav-link-me" href="<?php echo e(route('calendar')); ?>">Calendar</a>
                             </li>
 
                             <li class="nav-item dropdown">
