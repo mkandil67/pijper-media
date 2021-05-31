@@ -95,7 +95,7 @@
         <link href="{{ asset('css/activity.css') }}" rel="stylesheet">
         <script type="text/javascript" src="{{ asset('js/activity.js') }}"></script>
     </head>
-    <body>
+    <div>
     <div class="container-fluid pt-3">
         <div class="col-md">
             <div id="accordion">
@@ -143,6 +143,7 @@
             </div>
         </div>
     </div>
-    </body>
+    </div>
+    </div>
 
 @endsection

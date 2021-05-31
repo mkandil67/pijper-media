@@ -32,3 +32,5 @@ Route::post('/posts', 'App\Http\Controllers\PostsController@update')->name('post
 Route::get('my_activity', [App\Http\Controllers\MyActivtiesController::class, 'index'])->name('my_activity');
 
 Route::get('/calendar', 'App\Http\Controllers\CalendarController@index')->name('calendar');
+
+Route::get('/viral', 'App\Http\Controllers\ViralController@index')->name('viral');
