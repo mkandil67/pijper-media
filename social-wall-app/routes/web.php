@@ -1,6 +1,9 @@
 <?php
 
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +37,5 @@ Route::get('my_activity', [App\Http\Controllers\MyActivtiesController::class, 'i
 Route::get('/calendar', 'App\Http\Controllers\CalendarController@index')->name('calendar');
 
 Route::get('/viral', 'App\Http\Controllers\ViralController@index')->name('viral');
+
+Route::get('/search', 'App\Http\Controllers\PostsController@search')->name('search');

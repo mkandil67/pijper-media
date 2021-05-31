@@ -21,7 +21,7 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->string("post_id")->unique();
 
-            $table->binary("caption");
+            $table->text("caption");
             $table->text("post_url");
             $table->mediumText("image_url") -> nullable();
             $table->boolean("is_trending");

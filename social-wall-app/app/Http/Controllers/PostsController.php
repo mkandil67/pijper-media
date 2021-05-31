@@ -90,4 +90,11 @@ class PostsController extends Controller
     {
         //
     }
+
+    public function search() {
+        $search_text = $_GET['search'];
+        $posts = Post::where('caption', 'LIKE', '%'.$search_text.'%')->get();
+        $user = auth()->user();
+        return view('search', compact('posts', 'user'));
+    }
 }

@@ -159,6 +159,20 @@
 
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade active show" id="facebook" role="tabpanel" aria-labelledby="facebook-tab">
+                    <div class="container-fluid p-3">
+                        <form action="/search" type="get" role="search" class="d-flex justify-content-center">
+                            {{ csrf_field() }}
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="search"
+                                       placeholder="Search Posts">
+                                <span class="input-group-btn pl-2">
+                                    <button type="submit" class="btn btn-outline-primary">
+                                        <span><img class="mr-1" src="/pics/search.svg" width="16px" height="16px"> Search</span>
+                                    </button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
                     <div class="container-fluid" id="postsCard">
                         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
                             @foreach(\App\Models\Post::where('writer_id','=',null)->orderBy('posted_at','desc')->get() as $post)
@@ -203,6 +217,20 @@
                 </div>
 
                 <div class="tab-pane fade" id="instagram" role="tabpanel" aria-labelledby="instagram-tab">
+                    <div class="container-fluid p-3">
+                        <form action="/search" type="get" role="search" class="d-flex justify-content-center">
+                            {{ csrf_field() }}
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="search"
+                                       placeholder="Search Posts">
+                                <span class="input-group-btn pl-2">
+                                    <button type="submit" class="btn btn-outline-primary">
+                                        <span><img class="mr-1" src="/pics/search.svg" width="16px" height="16px"> Search</span>
+                                    </button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
                     <div class="container-fluid" id="postsCard">
                         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
                             @foreach(App\Models\Post::where('writer_id','=',null)->orderBy('posted_at','desc')->get() as $post)
@@ -247,6 +275,20 @@
                 </div>
 
                 <div class="tab-pane fade" id="twitter" role="tabpanel" aria-labelledby="twitter-tab">
+                    <div class="container-fluid p-3">
+                        <form action="/search" type="get" role="search" class="d-flex justify-content-center">
+                            {{ csrf_field() }}
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="search"
+                                       placeholder="Search Posts">
+                                <span class="input-group-btn pl-2">
+                                    <button type="submit" class="btn btn-outline-primary">
+                                        <span><img class="mr-1" src="/pics/search.svg" width="16px" height="16px"> Search</span>
+                                    </button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
                     <div class="container-fluid" id="postsCard">
                         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
                             @foreach(\App\Models\Post::where('writer_id','=',null)->orderBy('posted_at','desc')->get() as $post)
@@ -289,6 +331,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
 
         </div>
