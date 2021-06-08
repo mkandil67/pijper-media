@@ -24,9 +24,15 @@ class ComposerAutoloaderInit318733156e050b6fdfe47f6053ecf328
 
         require __DIR__ . '/platform_check.php';
 
+<<<<<<< Updated upstream
         spl_autoload_register(array('ComposerAutoloaderInit318733156e050b6fdfe47f6053ecf328', 'loadClassLoader'), true, true);
         self::$loader = $loader = new \Composer\Autoload\ClassLoader(\dirname(\dirname(__FILE__)));
         spl_autoload_unregister(array('ComposerAutoloaderInit318733156e050b6fdfe47f6053ecf328', 'loadClassLoader'));
+=======
+        spl_autoload_register(array('ComposerAutoloaderInit1ed6c4bbe60f58f693e0c7ad33873914', 'loadClassLoader'), true, true);
+        self::$loader = $loader = new \Composer\Autoload\ClassLoader(\dirname(\dirname(__FILE__)));
+        spl_autoload_unregister(array('ComposerAutoloaderInit1ed6c4bbe60f58f693e0c7ad33873914', 'loadClassLoader'));
+>>>>>>> Stashed changes
 
         $useStaticLoader = PHP_VERSION_ID >= 50600 && !defined('HHVM_VERSION') && (!function_exists('zend_loader_file_encoded') || !zend_loader_file_encoded());
         if ($useStaticLoader) {
