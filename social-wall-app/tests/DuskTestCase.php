@@ -42,16 +42,16 @@ abstract class DuskTestCase extends BaseTestCase
 
 
         // Uncomment other create() method to view the tests in browser. (And comment this one of course).
-        // return RemoteWebDriver::create(
-        //     $_ENV['APP_URL'] ?? 'http://localhost:9515',
-        //     DesiredCapabilities::chrome()->setCapability(
-        //         ChromeOptions::CAPABILITY, $options
-        //     )
-        // );
-
         return RemoteWebDriver::create(
-            'http://localhost:9515', DesiredCapabilities::chrome()
+            $_ENV['APP_URL'] ?? 'http://localhost:9515',
+            DesiredCapabilities::chrome()->setCapability(
+                ChromeOptions::CAPABILITY, $options
+            )
         );
+
+        // return RemoteWebDriver::create(
+        //     'http://localhost:9515', DesiredCapabilities::chrome()
+        // );
     }
 
     /**
