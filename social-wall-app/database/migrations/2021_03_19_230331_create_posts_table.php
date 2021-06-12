@@ -29,7 +29,7 @@ class CreatePostsTable extends Migration
             $table->unsignedBigInteger("engagement");
             $table->unsignedBigInteger("old_engagement");
             $table->unsignedBigInteger("writer_id")->nullable();
-            $table->dateTime("posted_at");
+            $table->dateTime("posted_at")->nullable();
             $table->unsignedBigInteger("account_id");
             $table->timestamps();
 

@@ -6,6 +6,13 @@
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/facebookData/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/facebookData/vendor/facebook/graph-sdk" />
+      <excludeFolder url="file://$MODULE_DIR$/facebookData/vendor/symfony/polyfill-mbstring" />
+      <excludeFolder url="file://$MODULE_DIR$/facebookData/vendor/nesbot/carbon" />
+      <excludeFolder url="file://$MODULE_DIR$/facebookData/vendor/twbs/bootstrap" />
+      <excludeFolder url="file://$MODULE_DIR$/facebookData/vendor/symfony/polyfill-php80" />
+      <excludeFolder url="file://$MODULE_DIR$/facebookData/vendor/symfony/translation-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/facebookData/vendor/phpmailer/phpmailer" />
+      <excludeFolder url="file://$MODULE_DIR$/facebookData/vendor/symfony/translation" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

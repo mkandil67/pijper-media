@@ -33,6 +33,7 @@ class CreateCategoriesTable extends Migration
             $table->timestamps();
 
             $table->index('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

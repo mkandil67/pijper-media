@@ -4,6 +4,13 @@
     <include_path>
       <path value="$PROJECT_DIR$/facebookData/vendor/composer" />
       <path value="$PROJECT_DIR$/facebookData/vendor/facebook/graph-sdk" />
+      <path value="$PROJECT_DIR$/facebookData/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/facebookData/vendor/nesbot/carbon" />
+      <path value="$PROJECT_DIR$/facebookData/vendor/twbs/bootstrap" />
+      <path value="$PROJECT_DIR$/facebookData/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/facebookData/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/facebookData/vendor/phpmailer/phpmailer" />
+      <path value="$PROJECT_DIR$/facebookData/vendor/symfony/translation" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0">
