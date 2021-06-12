@@ -3,7 +3,6 @@
 {{-- WELCOME PAGE --}}
 
 @section('content')
-
     <div class="antialiased">
             <div class="hero">
 
