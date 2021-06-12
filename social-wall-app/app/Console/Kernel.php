@@ -24,9 +24,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->exec('php -f ../facebookData/facebookData.php')->everyTwoMinutes();
-        $schedule->exec('php -f ../twitterData/twitterData.php')->everyTwoMinutes();
-        $schedule->exec('php -f ../instagramData/instagramData.php')->everyTwoMinutes();
+        $schedule->exec('php -f ../facebookData/facebookData.php')->everyTenMinutes();
+        $schedule->exec('php -f ../twitterData/twitterData.php')->everyTenMinutes();
+        $schedule->exec('php -f ../instagramData/instagramData.php')->everyTenMinutes();
+        $schedule->exec('php -f ../util/trendingCheck.php')->everyTenMinutes();
         // $schedule->command('inspire')->hourly();
     }
 
