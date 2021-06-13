@@ -9,11 +9,9 @@ use App\Models\User;
 
 class SearchTest extends DuskTestCase
 {
-    /**
-     * Test for the search function
-     *
-     * @return void
-     */
+    use DatabaseMigrations;
+
+    /** @test */
     public function test_search_function_home_page()
     {
 
@@ -32,7 +30,5 @@ class SearchTest extends DuskTestCase
                     ->clickAtXPath('/html/body/div/main/div/div/div[2]/div[1]/div[1]/form/div/span/button')
                     ->assertSee('The Search results for your query are :');
         });
-
-        User::where('email', '=', 'tes5t@test.com')->delete();
     }
 }

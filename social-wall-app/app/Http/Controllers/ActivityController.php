@@ -9,6 +9,15 @@ use App\Models\User;
 // This controller will show activities of different users to the authenticated user
 
 class ActivityController extends Controller {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(): \Illuminate\Contracts\Support\Renderable
     {
         $user = auth()->user();

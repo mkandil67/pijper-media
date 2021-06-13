@@ -9,12 +9,9 @@ use App\Models\User;
 
 class CategoriesHomeTest extends DuskTestCase
 {
+    use DatabaseMigrations;
 
-    /**
-     * Test selecting cateogries after registering
-     *
-     * @return void
-     */
+    /** @test */
     public function test_selecting_categories_on_home_page()
     {
 
@@ -29,13 +26,11 @@ class CategoriesHomeTest extends DuskTestCase
                     ->clickAtXPAth('/html/body/div/main/div/div/div/div/form/div/input[1]')
                     ->press('Submit')
                     ->assertPathIs('/home')
-                    ->click('#navbarDropdown')
-                    ->click('#navbarSupportedContent > ul > li.nav-item.dropdown.show > div > form > div > input[type=checkbox]:nth-child(10)')
-                    ->click('#navbarSupportedContent > ul > li.nav-item.dropdown.show > div > form > div > div.form-group.row.mb-0 > div > button')
+                    ->clickAtXPath('/html/body/div/div/nav/div/div/ul/li[2]/a')
+                    ->clickAtXPath('/html/body/div/div/nav/div/div/ul/li[2]/div/form/div/input[4]')
+                    ->clickAtXPath('/html/body/div/div/nav/div/div/ul/li[2]/div/form/div/div[2]/div/button')
                     ->assertPathIs('/home');
         });
-
-        User::where('email', '=', 'test2@test.com')->delete();
 
     }
 }

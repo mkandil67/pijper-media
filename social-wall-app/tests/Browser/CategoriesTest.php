@@ -9,12 +9,9 @@ use App\Models\User;
 
 class CategoriesTest extends DuskTestCase
 {
+    use DatabaseMigrations;
 
-    /**
-     * Test selecting cateogries after registering
-     *
-     * @return void
-     */
+    /** @test */
     public function test_selecting_categories_after_register()
     {
         $this->browse(function (Browser $browser) {
@@ -30,9 +27,7 @@ class CategoriesTest extends DuskTestCase
                     ->assertPathIs('/home');
         });
 
-        User::where('email', '=', 'test1@test.com')->delete();
-
     }
 
-    
+
 }

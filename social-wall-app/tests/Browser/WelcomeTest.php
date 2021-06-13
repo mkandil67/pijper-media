@@ -8,11 +8,9 @@ use Tests\DuskTestCase;
 
 class WelcomeTest extends DuskTestCase
 {
-    /**
-     * Welcome page visit
-     *
-     * @return void
-     */
+    use DatabaseMigrations;
+
+    /** @test */
     public function test_welcome_page()
     {
         $this->browse(function (Browser $browser) {

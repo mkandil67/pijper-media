@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 // It will then redirect the user to the home page
 class CategoriesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function create()
     {
         return view('categories');

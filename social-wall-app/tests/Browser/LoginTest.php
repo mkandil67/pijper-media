@@ -9,25 +9,28 @@ use App\Models\User;
 
 class LoginTest extends DuskTestCase
 {
-    /**
-     * Creating a new user and logging in through login page
-     *
-     * @return void
-     */
+    use DatabaseMigrations;
+    /** @test */
     public function test_login_user()
     {
-        $user = User::factory()->create([
-            'email' => 'test@test.com',
-        ]);
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/register')
+                ->type('name', 'test')
+                ->type('email', 'test1@test.com')
+                ->type('password', 'testpassword1')
+                ->type('password_confirmation', 'testpassword1')
+                ->press('Register')
+                ->assertPathIs('/categories')
+                ->clickAtXPAth('/html/body/div/main/div/div/div/div/form/div/input[1]')
+                ->press('Submit')
+                ->assertPathIs('/home')
+                ->clickAtXPath('/html/body/div/div/nav/div/div/ul/li[6]/a')
+                ->clickAtXPath('/html/body/div/div/nav/div/div/ul/li[6]/div/a[3]')
+                ->visit('/login')
+                ->type('email', 'test1@test.com')
+                ->type('password', 'testpassword1')
+                ->press('Login');
 
-        $this->browse(function ($browser) use ($user) {
-            $browser->visit('/login')
-                    ->type('email', $user->email)
-                    ->type('password', 'password')
-                    ->press('Login')
-                    ->assertPathIs('/home');
-
-            $user->delete();
         });
     }
 }

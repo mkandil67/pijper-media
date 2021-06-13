@@ -4953,6 +4953,7 @@ return array(
     'Tests\\Browser\\WelcomeTest' => $baseDir . '/tests/Browser/WelcomeTest.php',
     'Tests\\CreatesApplication' => $baseDir . '/tests/CreatesApplication.php',
     'Tests\\DuskTestCase' => $baseDir . '/tests/DuskTestCase.php',
+    'Tests\\Feature\\DBTest' => $baseDir . '/tests/Feature/DBTest.php',
     'Tests\\Feature\\ExampleTest' => $baseDir . '/tests/Feature/ExampleTest.php',
     'Tests\\TestCase' => $baseDir . '/tests/TestCase.php',
     'Tests\\Unit\\ExampleTest' => $baseDir . '/tests/Unit/ExampleTest.php',
