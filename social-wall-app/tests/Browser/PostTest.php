@@ -14,7 +14,7 @@ class PostTest extends DuskTestCase
     use DatabaseMigrations;
 
     /** @test */
-    public function test_selecting_categories_on_home_page()
+    public function test_posts_on_home_page()
     {
         $this->browse(function ($browser) {
 

@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Categories;
+use App\Models\Post;
 use App\Models\User;
 use PDO;
 use Tests\TestCase;
@@ -222,6 +223,72 @@ class DBTest extends TestCase
         $stmt->execute();
 
         $this->assertDatabaseHas('posts', $newPost);
+    }
+
+    /** @test tests checking off a post, i.e. changing the writer id */
+    public function test_database_check_off_post_updating()
+    {
+        $host = "127.0.0.1";
+        $db_name = "users-pijper";
+        $username = "root";
+        $password = "";
+
+        try {
+            $con = new PDO("mysql:host=$host;dbname=$db_name", $username, $password);
+            // set the PDO error mode to exception
+            $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            echo "Connection failed: " . $e->getMessage();
+        }
+
+        $testPost = array(
+            'post_id' => 123,
+            'caption' => 'This is a caption!',
+            'post_url' => 'test.url/1234',
+            'image_url' => 'test.url/12345',
+            'is_trending' => 0,
+            'is_viral' => 0,
+            'engagement' => 20,
+            'old_engagement' => 10,
+            'writer_id' => null,
+            'posted_at' => null,
+            'account_id' => 1
+        );
+
+        $testPost2 = array(
+            'post_id' => 123,
+            'caption' => 'This is a caption!',
+            'post_url' => 'test.url/1234',
+            'image_url' => 'test.url/12345',
+            'is_trending' => 0,
+            'is_viral' => 0,
+            'engagement' => 20,
+            'old_engagement' => 10,
+            'writer_id' => 1,
+            'posted_at' => null,
+            'account_id' => 1
+        );
+
+        // check for writing about a post
+        $this->assertDatabaseHas('posts', $testPost);
+        $post = Post::find(1);
+        if (!empty($post->writer_id)){
+            $post->writer_id = null;
+        } else {
+            $post->writer_id = 1;
+        }
+        $post->save();
+        $this->assertDatabaseHas('posts', $testPost2);
+
+        // check for being done with writing about a post
+        $post = Post::find(1);
+        if (!empty($post->writer_id)){
+            $post->writer_id = null;
+        } else {
+            $post->writer_id = 1;
+        }
+        $post->save();
+        $this->assertDatabaseHas('posts', $testPost);
     }
 
 
