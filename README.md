@@ -68,6 +68,6 @@ To run our application, please perform those tasks in the following order:
 3. Consult the link http://localhost/phpmyadmin in your browser and go to the last database.
 4. Again go to the \social-wall-app\ directory and run the following command in your terminal ```php artisan schedule:work```, this command will start filling the database with the most recent posts from instagram, facebook and twitter as well as checking if they are trending. This will happen every 10 minutes.
 5. Open a new tab in the same directory in your terminal and run the command ```php artisan serve```, this will open the application on port number 8000 in your localhost.
-6. Test the application!
+6. Visit the webpage by entering ```127.0.0.1:8000/``` into your webbrowser and test the application!
 
 If reviewer wants to run the program on a development server and the below listed tutorial was not enough, please contact us so we can schedule a session to help you with detailed information about how to run the program correctly. In the case you contact us to install the dependancies, please tell us the OS you are using beforehand so we can be ready.

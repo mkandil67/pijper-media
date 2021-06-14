@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="04ae9b14-beb2-4ddf-8e19-fe1f79266a95" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/social-wall-app/tests/Browser/PostTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/tests/Browser/PostTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/social-wall-app/tests/Feature/DBTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/social-wall-app/tests/Feature/DBTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <list id="0aa935d0-9654-4f4f-a0fa-06f0e07814b7" name="Changes by Jeroen" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -79,7 +78,9 @@
       <workItem from="1622116275702" duration="3246000" />
       <workItem from="1623522650443" duration="820000" />
       <workItem from="1623524865314" duration="81000" />
-      <workItem from="1623591205891" duration="1489000" />
+      <workItem from="1623591205891" duration="3352000" />
+      <workItem from="1623672120993" duration="1032000" />
+      <workItem from="1623673461156" duration="466000" />
     </task>
     <servers />
   </component>
