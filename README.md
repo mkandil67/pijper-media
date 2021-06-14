@@ -1,9 +1,9 @@
-# pijper-media
-This repository to manage the workflow of the social wall application RUG's Software Engineering team developped for the Pijper Media company.
+# Pijper-Media
+This repository is to manage the workflow of the social wall application RUG's Software Engineering team developed for the Pijper Media company.
 
 # Dependencies Tutorial
 ## What are the dependencies?
-You can find the dependencies of the application we developped in the order of priority here (Note that some are requirements to install others)
+You can find the dependencies of the application we developed in the order of priority here (Note that some are requirements to install others)
 1. PHP
 2. Composer
 3. Laravel
@@ -45,7 +45,7 @@ XAMPP is an Apache2 and MySQL client that runs databases on your localhost/IP Ad
 
 ### Libraries
 The last step is to download all libraries used in our project, this could be a hard task but fortunately, composer simplifies it.
-Inside these 4 folders:
+Inside these 5 folders:
 1. /social-wall-app/
 2. /util/
 3. /facebookData/
@@ -62,9 +62,10 @@ Once these steps are done, you can proceed to running the application.
 
 To run our application, please perform those tasks in the following order:
 1. Open XAMPP (wherever you downloaded it) and start the MySQL server aswell as the Apache2 server. *In case one of them is not running, please stop the default apache2/mysql server(s) on your machine. For example, this can be done in linux by running the command ```sudo service apache2 stop```*.
-2. Consult the link http://localhost/phpmyadmin in your browser and go to the last database.
-3. Open the pulled \social-wall-app\ directory and run the following command in your terminal ```php artisan schedule:work```, this command will start filling the database with the most recent posts from instagram, facebook and twitter as well as checking if they are trending. This will happen every 10 minutes.
-4. Open a new tab in the same directory in your terminal and run the command ```php artisan serve```, this will open the application on port number 8000 in your localhost.
-5. Test the application!
+2. Go to the \social-wall-app\ directory and run the following command in your terminal ```php artisan migrate```, this command will run all of the outstanding migrations.
+3. Consult the link http://localhost/phpmyadmin in your browser and go to the last database.
+4. Again go to the \social-wall-app\ directory and run the following command in your terminal ```php artisan schedule:work```, this command will start filling the database with the most recent posts from instagram, facebook and twitter as well as checking if they are trending. This will happen every 10 minutes.
+5. Open a new tab in the same directory in your terminal and run the command ```php artisan serve```, this will open the application on port number 8000 in your localhost.
+6. Test the application!
 
 If reviewer wants to run the program on a development server and the below listed tutorial was not enough, please contact us so we can schedule a session to help you with detailed information about how to run the program correctly. In the case you contact us to install the dependancies, please tell us the OS you are using beforehand so we can be ready.
