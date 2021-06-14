@@ -71,3 +71,5 @@ To run our application, please perform those tasks in the following order:
 6. Visit the webpage by entering ```127.0.0.1:8000/``` into your webbrowser and test the application!
 
 If reviewer wants to run the program on a development server and the below listed tutorial was not enough, please contact us so we can schedule a session to help you with detailed information about how to run the program correctly. In the case you contact us to install the dependancies, please tell us the OS you are using beforehand so we can be ready.
+
+Thank you for your time, we're waiting to hear from you!!
