@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Accounts;
-use App\Models\Categories;
 use App\Models\Post;
-use Illuminate\Http\Request;
 
 class ViralController extends Controller
 {

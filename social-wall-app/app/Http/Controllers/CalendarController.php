@@ -2,10 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Categories;
-use App\Models\Post;
-use App\Models\User;
-use App\Models\Accounts;
 
 // This controller shows an authenticated user the posts from the categories he chose from different platforms
 
