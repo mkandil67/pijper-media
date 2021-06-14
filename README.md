@@ -1,6 +1,8 @@
 # pijper-media
 This repository to manage the workflow of the social wall application RUG's Software Engineering team developped for the Pijper Media company.
 
+*```||``` stands for Logical OR, it is not something you should write in your terminal.
+
 # Dependencies Tutorial
 ## What are the dependencies?
 You can find the dependencies of the application we developped in the order of priority here (Note that some are requirements to install others)
